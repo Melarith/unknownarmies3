@@ -1,0 +1,52 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <div style="width: 100%; margin: 5px">
+    <div style="display: table; width: 100%">
+      <div style="display: table-row">
+        <div style="display: table-cell; padding-right: 5px"><b>Blurb</b></div>
+        <div style="display: table-cell">
+          <input name="blurb" style="width: 97.5%" maxlength="500" placeholder="Channel blurb" value="{{blurb}}" />
+        </div>
+      </div>
+    
+      <div style="display: table-row">
+        <div style="display: table-cell; padding: 10px 10px 0 0"><b>Level</b></div>
+        <div style="display: table-cell; padding-top: 10px">
+          <select name="minimum">
+            {{#each levels}}
+            <option value="{{@key}}">{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+    
+      <div style="display: table-row">
+        <div style="display: table-cell; padding: 10px 10px 0 0; vertical-align: top"><b>Description</b></div>
+        <div style="display: table-cell; padding: 10px 10px 0 0">
+          <textarea name="description" rows="10" style="font-family: Signika, sans-serif; background-color: whitesmoke; resize: none; width: 100%">{{description}}</textarea>
+        </div>
+      </div>
+
+      <div style="display: table-row">
+        <div style="display: table-cell; padding: 10px 10px 0 0"><b>Chat Text</b></div>
+        <div style="display: table-cell; padding: 10px 10px 0 0">
+          <input name="chattext" style="width: 97.5%" maxlength="500" placeholder="Chat text" value="{{chattext}}" />
+        </div>
+      </div>
+
+      <div style="display: table-row">
+        <div style="display: table-cell; padding: 10px 10px 10px 0"><b>Avatar Check</b></div>
+        <div style="display: table-cell; padding: 10px 10px 10px 0">
+          <label>
+            <input type="radio" name="avatarcheck" value="1" {{#if avatarcheck}}checked{{/if}}>&nbsp;
+            Yes
+          </label>
+          <label>
+            <input type="radio" name="avatarcheck" value="0" {{#unless avatarcheck}}checked{{/unless}}>&nbsp;
+            No
+          </label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>

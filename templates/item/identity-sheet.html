@@ -1,0 +1,90 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <div class="flexrow" style="height: 100%; padding: 5px; background-color: #f1d592">
+    <fieldset style="border: 1.5px solid black; border-radius: 3px; background-color: whitesmoke">
+      <legend class="flexrow">
+        &nbsp;{{item.name}}&nbsp;
+      </legend>
+
+      <div class="identity" style="font-size: 1.2em; vertical-align: middle">
+        <div class="table" style="border-collapse: separate; border-spacing: 0 5px; ">
+          <div class="tr">
+            <div class="td" style="font-weight: bold; padding-right: 5px">Identity</div>
+            <div class="td">
+              <input class="itemName" name="name" type="text" value="{{item.name}}" placeholder="Identity name"/>
+            </div>
+
+            <div class="td" style="font-weight: bold; padding: 0 5px 0 20px">Rank</div>
+            <div class="td">
+              <input name="data.value" type="number" value="{{data.value}}" maxlength="2" min="1" max="99"
+                style="width: 35px; text-align: right"/>
+            </div>
+          </div>
+
+          <div class="tr">
+            <div class="td" style="font-weight: bold; padding-right: 5px">Type</div>
+            <div class="td">
+              <select name="data.type" class="identityType" style="font-size: 1em; font-family: Signika, sans-serif">
+                {{#select data.type}}
+                {{#each config.identityTypes}}
+                <option value="{{@key}}">{{this.name}}</option>
+                {{/each}}
+                {{/select}}
+              </select>
+            </div>
+
+            <div class="td" style="font-weight: bold; padding: 0 5px 0 20px">Obsession</div>
+            <div class="td" style="vertical-align: middle">
+              <input name="data.obsession" type="checkbox" {{checked data.obsession}}/>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px">
+          <div>I'm <span class="aoran">a</span> {{item.name}}, of course I can...</div>
+          <textarea name="data.ocic" style="font-size: 1em; font-family: Signika, sans-serif; border: none; background-color: transparent; resize: none; outline: none" placeholder="do all sorts of stuff">{{data.ocic}}</textarea>
+        </div>
+
+        <div style="margin-top: 10px">
+          <div style="font-weight: bold; border-bottom: 1px solid black">Features</div>
+          <div class="featuresList" test="Yep">
+            <div feature="1" style="margin-top: 5px">
+              <select name="data.feature1" class="feature" style="font-size: 1em; font-family: Signika, sans-serif" {{#if data.feature1lock}}disabled="true"{{/if}}>
+                <option disabled selected value>-- Add a Feature --</option>
+                {{#select data.feature1}}
+                  {{#each data.featureOptions}}
+                    {{#if this.include}}
+                      <option value="{{this.key}}">{{this.label}}</option>
+                    {{/if}}
+                  {{/each}}
+                {{/select}}
+              </select>
+              <div style="margin-left: 10px; font-size: 0.9em; font-style: italic; margin-top: 2px">{{{data.feature1descr}}}</div>
+            </div>
+            <div feature="2" style="margin-top: 20px;{{#unless data.feature2active}}display: none;{{/unless}}">
+              <select name="data.feature2" class="feature" style="font-size: 1em; font-family: Signika, sans-serif" {{#if data.feature2lock}}disabled="true"{{/if}}>
+                <option disabled selected value>-- Add a Feature --</option>
+                {{#select data.feature2}}
+                  {{#each data.featureOptions}}
+                  <option value="{{this.key}}">{{this.label}}</option>
+                  {{/each}}
+                {{/select}}
+              </select>
+              <div style="margin-left: 10px; font-size: 0.9em; font-style: italic; margin-top: 2px">{{{data.feature2descr}}}</div>
+            </div>
+            <div feature="3" style="margin-top: 20px;{{#unless data.feature3active}}display: none;{{/unless}}">
+              <select name="data.feature3" class="feature" style="font-size: 1em; font-family: Signika, sans-serif">
+                <option disabled selected value>-- Add a Feature --</option>
+                {{#select data.feature3}}
+                  {{#each data.featureOptions}}
+                  <option value="{{this.key}}">{{this.label}}</option>
+                  {{/each}}
+                {{/select}}
+              </select>
+              <div style="margin-left: 10px; font-size: 0.9em; font-style: italic; margin-top: 2px">{{{data.feature3descr}}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</form>

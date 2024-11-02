@@ -1,0 +1,1343 @@
+/* ----------------------------------------- */
+/*  Fonts                                    */
+/* ----------------------------------------- */
+/*
+@font-face {
+  font-family: 'Modesto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../fonts/modesto-condensed/modesto-condensed.woff2') format('woff2');
+}
+*/
+@font-face {
+  font-family: 'JMH Typewriter';
+  src: url("../fonts/jmh_typewriter-webfont.woff2") format("woff2"), url("../fonts/jmh_typewriter-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JMH Typewriter Black';
+  src: url("../fonts/jmh_typewriter-black-webfont.woff2") format("woff2"), url("../fonts/jmh_typewriter-black-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JMH Typewriter Bold';
+  src: url("../fonts/jmh_typewriter-bold-webfont.woff2") format("woff2"), url("../fonts/jmh_typewriter-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JMH Typewriter Thin';
+  src: url("../fonts/jmh_typewriter-thin-webfont.woff2") format("woff2"), url("../fonts/jmh_typewriter-thin-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FZM Embossed Label Light";
+  src: url("../fonts/fzm-embossed.label.light-webfont.woff2") format("woff2"), url("../fonts/fzm-embossed.label.light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FZM Embossed Label";
+  src: url("../fonts/fzm-embossed.label-webfont.woff2") format("woff2"), url("../fonts/fzm-embossed.label-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FZM Embossed Text";
+  src: url("../fonts/fzm-embossed.text-webfont.woff2") format("woff2"), url("../fonts/fzm-embossed.text-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FZM Embossed Text Light";
+  src: url("../fonts/fzm-embossed.text.light-webfont.woff2") format("woff2"), url("../fonts/fzm-embossed.text.light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.embossed {
+  font-family: "FZM Embossed Label", serif;
+  font-size: 10px;
+}
+.embossedLight {
+  font-family: "FZM Embossed Label Light", serif;
+  font-size: 10px;
+}
+.modesto {
+  font-family: "Palatino Linotype", serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+/* ----------------------------------------- */
+/*  Sheet Styles                             */
+/* ----------------------------------------- */
+/* ----------------------------------------- */
+/*  Flexbox                                  */
+/* ----------------------------------------- */
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.flexrow > * {
+  flex: 1;
+}
+.flexrow .flex1 {
+  flex: 1;
+}
+.flexrow .flex2 {
+  flex: 2;
+}
+.flexrow .flex3 {
+  flex: 3;
+}
+.flexrow .flex4 {
+  flex: 4;
+}
+.flexcol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.flexcol > * {
+  flex: 1;
+}
+.flexcol .flex1 {
+  flex: 1;
+}
+.flexcol .flex2 {
+  flex: 2;
+}
+.flexcol .flex3 {
+  flex: 3;
+}
+.flexcol .flex4 {
+  flex: 4;
+}
+/* ----------------------------------------- */
+/*  All Apps                                 */
+/* ----------------------------------------- */
+.ua3 {
+  /* ----------------------------------------- */
+  /*  Dice check indicator                     */
+  /* ----------------------------------------- */
+  /*===============================================
+  Tabbed Styles
+  ===============================================*/
+  /*----- Round Tabs -----*/
+  /* ----------------------------------------- */
+  /*  Tooltips                                 */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Tables                                   */
+  /* ----------------------------------------- */
+  /*===============================================
+  Fieldset
+  ===============================================*/
+  /* ----------------------------------------- */
+  /*  Element Styles                           */
+  /* ----------------------------------------- */
+  /* Form Groups */
+  /* Tags */
+}
+.ua3 .window-content {
+  background: rgba(240, 240, 240, 0.1);
+  font-size: 13px;
+  color: #191813;
+}
+.ua3 .dicecheck {
+  font-size: 10.5pt;
+  margin-right: 5px;
+  color: darkred;
+  cursor: pointer;
+}
+.ua3 span.addButton {
+  cursor: pointer;
+  background-color: lightgreen;
+}
+.ua3 textarea {
+  background-color: transparent;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.ua3 .tabbed {
+  width: 100%;
+  min-width: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: border 250ms ease;
+  background: whitesmoke;
+}
+.ua3 .tabbed ul {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  float: left;
+  padding-left: 48px;
+  list-style-type: none;
+}
+.ua3 .tabbed ul * {
+  margin: 0px;
+  padding: 0px;
+}
+.ua3 .tabbed ul li {
+  display: block;
+  float: right;
+  padding: 10px 24px 8px;
+  background-color: #e8bb4d;
+  margin-right: 46px;
+  z-index: 2;
+  position: relative;
+  cursor: pointer;
+  color: black;
+  text-transform: uppercase;
+  font: 10 13px/20px "FZM Embossed Text Light", serif;
+  transition: all 250ms ease;
+}
+.ua3 .tabbed ul li:before,
+.ua3 .tabbed ul li:after {
+  display: block;
+  content: " ";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 44px;
+  background-color: #e8bb4d;
+  transition: all 150ms ease;
+}
+.ua3 .tabbed ul li:before {
+  right: -24px;
+  transform: skew(30deg, 0deg);
+  box-shadow: rgba(0, 0, 0, 0.1) 3px 2px 5px, inset rgba(255, 255, 255, 0.09) -1px 0;
+}
+.ua3 .tabbed ul li:after {
+  left: -24px;
+  transform: skew(-30deg, 0deg);
+  box-shadow: rgba(0, 0, 0, 0.1) -3px 2px 5px, inset rgba(255, 255, 255, 0.09) 1px 0;
+}
+.ua3 .tabbed ul li:hover,
+.ua3 .tabbed ul li:hover:before,
+.ua3 .tabbed ul li:hover:after {
+  background-color: #e8bb4d;
+  color: #660000;
+}
+.ua3 .tabbed ul li.active {
+  z-index: 3;
+}
+.ua3 .tabbed ul li.active,
+.ua3 .tabbed ul li.active:before,
+.ua3 .tabbed ul li.active:after {
+  background-color: #f1d592;
+  font: 50 13px/20px "FZM Embossed Text", serif;
+  color: black;
+}
+.ua3 .tabbed.round ul li {
+  border-radius: 5px 5px 0 0;
+}
+.ua3 .tabbed.round ul li:before {
+  border-radius: 0 5px 0 0;
+}
+.ua3 .tabbed.round ul li:after {
+  border-radius: 5px 0 0 0;
+}
+.ua3 .tooltip {
+  display: table;
+  position: relative;
+  text-align: left;
+}
+.ua3 .tooltip .right {
+  min-width: 350px;
+  max-width: 500px;
+  top: 50%;
+  left: 100%;
+  margin-left: 10px;
+  transform: translate(0, -50%);
+  padding: 5px 10px;
+  color: #444444;
+  background-color: rgba(240, 240, 240, 0.1);
+  font-weight: normal;
+  font-size: 13px;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 99999999;
+  box-sizing: border-box;
+  border: 1px solid #999999;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+.ua3 .tooltip:hover .right {
+  visibility: visible;
+  opacity: 1;
+}
+.ua3 .tooltip .right i {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -12px;
+  width: 12px;
+  height: 24px;
+  overflow: hidden;
+}
+.ua3 .tooltip .right i::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 0;
+  top: 50%;
+  transform: translate(50%, -50%) rotate(-45deg);
+  background-color: rgba(240, 240, 240, 0.1);
+  border: 1px solid #999999;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+.ua3 .table {
+  display: table;
+}
+.ua3 .tr {
+  display: table-row;
+}
+.ua3 .td {
+  display: table-cell;
+}
+.ua3 fieldset.fieldBunch {
+  border: 1.5px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: whitesmoke;
+}
+.ua3 fieldset.fieldBunch legend {
+  background-color: white;
+  font-family: FZM Embossed Label;
+  font-size: 8pt;
+  padding: 0;
+}
+.ua3 label.embossed {
+  background-color: white;
+  font-family: FZM Embossed Label;
+  font-size: 8pt;
+  padding: 0;
+}
+.ua3 .shortspace {
+  background-color: black;
+  font-family: FZM Embossed Label;
+  display: inline-block;
+  font-size: 8pt;
+  width: 5px;
+}
+.ua3 .disabled {
+  color: #c9c7b8;
+}
+.ua3 ul.no-bullets {
+  list-style-type: none;
+  /* Remove bullets */
+  padding: 0;
+  /* Remove padding */
+  margin: 0;
+  /* Remove margins */
+}
+.ua3 ul.no-bullets li {
+  padding-top: 4px;
+}
+.ua3 input[type="text"],
+.ua3 input[type="number"],
+.ua3 select {
+  height: calc(100% - 2px);
+  border: 1px solid #7a7971;
+  background: rgba(0, 0, 0, 0.05);
+  color: #191813;
+}
+.ua3 input[type="text"]:hover,
+.ua3 input[type="number"]:hover,
+.ua3 input[type="text"]:focus,
+.ua3 input[type="number"]:focus {
+  border: 1px solid #111;
+  box-shadow: 0 0 8px darkred;
+}
+.ua3 input:disabled,
+.ua3 select:disabled,
+.ua3 textarea:disabled {
+  color: #4b4a44;
+}
+.ua3 input:disabled:hover,
+.ua3 select:disabled:hover,
+.ua3 textarea:disabled:hover,
+.ua3 input:disabled:focus,
+.ua3 select:disabled:focus,
+.ua3 textarea:disabled:focus {
+  box-shadow: none !important;
+  border: 1px solid transparent !important;
+  outline: none !important;
+}
+.ua3 button {
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px groove #eeede0;
+}
+.ua3 label {
+  margin-right: 3px;
+}
+.ua3 label.checkbox {
+  flex: auto;
+  padding: 0;
+  margin: 0;
+  height: 22px;
+  line-height: 22px;
+  font-size: 11px;
+}
+.ua3 label.checkbox > input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0 2px 0 0;
+  position: relative;
+  top: 4px;
+}
+.ua3 label.checkbox.right > input[type="checkbox"] {
+  margin: 0 0 0 2px;
+}
+.ua3 .form-group label {
+  flex: 2;
+  color: #4b4a44;
+  font-weight: bold;
+}
+.ua3 .form-group .form-fields {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.ua3 .form-group .form-fields > * {
+  flex: 1;
+}
+.ua3 .form-group .form-fields .flex1 {
+  flex: 1;
+}
+.ua3 .form-group .form-fields .flex2 {
+  flex: 2;
+}
+.ua3 .form-group .form-fields .flex3 {
+  flex: 3;
+}
+.ua3 .form-group .form-fields .flex4 {
+  flex: 4;
+}
+.ua3 .form-group .form-fields > * {
+  margin: 0 3px 0 0;
+}
+.ua3 .form-group .form-fields > *:last-child {
+  margin-right: 0;
+}
+.ua3 .form-group.stacked label {
+  flex: 0 0 100%;
+  margin: 0;
+}
+.ua3 .form-group.stacked label.checkbox {
+  flex: auto;
+  text-align: left;
+}
+.ua3 .form-header {
+  margin: 0 0 0.25em 0;
+  padding: 2px 0;
+  border-top: 2px groove #eeede0;
+  border-bottom: 2px groove #eeede0;
+  font-family: "Palatino Linotype", serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+.ua3 .tag {
+  display: inline-block;
+  margin: 0 2px 0 0;
+  padding: 0 3px;
+  font-size: 10px;
+  line-height: 16px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.05);
+}
+/* ----------------------------------------- */
+/*  Entity Sheets Specifically               */
+/* ----------------------------------------- */
+.ua3.sheet {
+  /* ----------------------------------------- */
+  /*  Element Styles                           */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  TinyMCE                                  */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Sheet Header                             */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Sheet Navigation                         */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Sheet Body                               */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  List Filters                             */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Trait Lists                              */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Items Lists                              */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Active Effects                           */
+  /* ----------------------------------------- */
+}
+.ua3.sheet .window-content {
+  overflow-y: hidden;
+  padding: 5px;
+  background: rgba(240, 240, 240, 0.1);
+  font-size: 13px;
+  color: #191813;
+}
+.ua3.sheet .window-content form {
+  height: 100%;
+  overflow: hidden;
+}
+.ua3.sheet .window-content .tab {
+  height: 100%;
+  overflow-y: auto;
+  align-content: flex-start;
+}
+.ua3.sheet input[type="text"],
+.ua3.sheet input[type="number"] {
+  background: none;
+  border: 1px solid transparent;
+}
+.ua3.sheet input[type="text"]:hover,
+.ua3.sheet input[type="number"]:hover,
+.ua3.sheet input[type="text"]:focus,
+.ua3.sheet input[type="number"]:focus {
+  border: 1px solid #111;
+}
+.ua3.sheet select {
+  flex: 1;
+  font-size: 12px;
+  height: 22px;
+  background: transparent;
+}
+.ua3.sheet .editable .rollable:hover {
+  cursor: pointer;
+}
+.ua3.sheet .editable h4.rollable:hover,
+.ua3.sheet .editable .rollable:hover > h4 {
+  color: #000;
+  text-shadow: 0 0 10px red;
+}
+.ua3.sheet span.sep {
+  flex: none;
+  margin: 0 1px;
+  display: inline;
+  position: relative;
+  color: #7a7971;
+  font-weight: normal;
+}
+.ua3.sheet .editor {
+  height: 100%;
+}
+.ua3.sheet .editor .tox-toolbar-overlord,
+.ua3.sheet .editor .tox-toolbar__primary {
+  background: none;
+}
+.ua3.sheet .sheet-header {
+  flex: 0 0 100px;
+  border-bottom: 2px groove #eeede0;
+  /* Character Name */
+  /* Profile Image */
+  /* Header Summary Details */
+}
+.ua3.sheet .sheet-header .header-details {
+  font-family: "Palatino Linotype", serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+.ua3.sheet .sheet-header h1 {
+  flex: 1;
+  border-bottom: none;
+  height: 60px;
+  margin: 0;
+  padding: 5px;
+}
+.ua3.sheet .sheet-header h1 input {
+  display: block;
+  height: 50px;
+  font-size: 32px;
+  margin: 0;
+}
+.ua3.sheet .sheet-header img.profile {
+  flex: 0 0 100px;
+  max-width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border: none;
+  border-right: 2px groove #eeede0;
+}
+.ua3.sheet .sheet-header .summary {
+  flex: 0 0 100%;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px groove #eeede0;
+  border-bottom: none;
+}
+.ua3.sheet .sheet-header .summary li {
+  height: calc(100% - 6px);
+  float: left;
+  margin: 2px 0;
+  padding: 0;
+  border-right: 2px groove #eeede0;
+  line-height: 34px;
+  color: #4b4a44;
+}
+.ua3.sheet .sheet-header .summary li:last-child {
+  border-right: none;
+}
+.ua3.sheet .sheet-navigation {
+  flex: 0 0 30px;
+  margin-bottom: 5px;
+  font-family: "Palatino Linotype", serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+.ua3.sheet .sheet-navigation .item {
+  height: 30px;
+  line-height: 32px;
+  margin: 0 24px;
+  border-bottom: 3px solid #b5b3a4;
+}
+.ua3.sheet .sheet-navigation .item.active {
+  border-bottom: 3px solid #44191A;
+}
+.ua3.sheet .sheet-body {
+  flex: 1;
+  overflow: hidden;
+}
+.ua3.sheet .filter-list {
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 16px;
+  max-width: 70%;
+}
+.ua3.sheet .filter-list .filter-icon {
+  flex: none;
+  font-size: 14px;
+  color: #7a7971;
+}
+.ua3.sheet .filter-list .filter-item {
+  text-align: center;
+  font-size: 12px;
+  margin: 0 6px 0 0;
+  border-bottom: 3px solid #b5b3a4;
+  white-space: nowrap;
+}
+.ua3.sheet .filter-list .filter-item:last-child {
+  margin: 0;
+}
+.ua3.sheet .filter-list .filter-item:hover {
+  text-shadow: 0 0 4px red;
+  border-bottom: 3px solid #7a7971;
+}
+.ua3.sheet .filter-list .filter-item.active {
+  border-bottom: 3px solid #44191A;
+}
+.ua3.sheet .traits {
+  margin: 5px 0 0;
+}
+.ua3.sheet .traits .trait-selector {
+  flex: 0 0 16px;
+  padding: 2px 0;
+  color: #999;
+  font-size: 10px;
+}
+.ua3.sheet .traits .traits-list {
+  flex: 0 0 100%;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ua3.sheet .items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  color: #7a7971;
+}
+.ua3.sheet .items-list .item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ua3.sheet .items-list .item-name {
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-align: left;
+  align-items: center;
+}
+.ua3.sheet .items-list .item-name h3,
+.ua3.sheet .items-list .item-name h4 {
+  margin: 0;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.ua3.sheet .items-list .item-controls {
+  flex: 0 0 60px;
+  justify-content: space-between;
+}
+.ua3.sheet .items-list .item-controls a {
+  font-size: 12px;
+  text-align: center;
+}
+.ua3.sheet .items-list .item {
+  align-items: center;
+  padding: 0 2px;
+  border-bottom: 1px solid #c9c7b8;
+}
+.ua3.sheet .items-list .item:last-child {
+  border-bottom: none;
+}
+.ua3.sheet .items-list .item .item-name {
+  color: #191813;
+}
+.ua3.sheet .items-list .item .item-name .item-image {
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: 30px;
+  border: none;
+  margin-right: 5px;
+}
+.ua3.sheet .items-list .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  font-weight: bold;
+}
+.ua3.sheet .items-list .items-header > * {
+  font-size: 12px;
+  text-align: center;
+}
+.ua3.sheet .items-list .items-header h3 {
+  padding-left: 5px;
+  font-family: "Palatino Linotype", serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: left;
+  font-size: 16px;
+}
+.ua3.sheet .effects .item .effect-source,
+.ua3.sheet .effects .item .effect-duration,
+.ua3.sheet .effects .item .effect-controls {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+}
+.ua3.sheet .effects .item .effect-controls {
+  border: none;
+}
+/* ----------------------------------------- */
+/* Trait Selector
+/* ----------------------------------------- */
+#trait-selector .trait-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#trait-selector input[type="text"] {
+  height: 24px;
+  margin: 2px;
+}
+.ua3.sheet.item {
+  min-height: 400px;
+  max-height: 95%;
+  min-width: 480px;
+  margin: 0px;
+  padding: 0px;
+  background: whitesmoke;
+  /* ----------------------------------------- */
+  /*  fieldset                                 */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  features                                 */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Sheet Header                             */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Item Details Form                        */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Item Actions                             */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Item Actions                             */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Loot Sheet (No Tabs)                     */
+  /* ----------------------------------------- */
+}
+.ua3.sheet.item header.window-header {
+  background-color: DarkBlue;
+}
+.ua3.sheet.item .window-content {
+  background: whitesmoke;
+}
+.ua3.sheet.item .highlightItem {
+  font-weight: bold;
+  color: #44191A;
+}
+.ua3.sheet.item fieldset legend {
+  background-color: whitesmoke;
+  font-family: FZM Embossed Label;
+  padding: 0;
+}
+.ua3.sheet.item .featuresList .feature {
+  border: none;
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Safari, Chrome, Opera */
+  -webkit-appearance: none;
+}
+.ua3.sheet.item .featuresList .feature:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+.ua3.sheet.item .featuresList .feature::-ms-expand {
+  display: none;
+}
+.ua3.sheet.item textarea {
+  font-family: verdana;
+  background-color: whitesmoke;
+  border: none;
+  resize: none;
+  box-sizing: border-box;
+  height: 100%;
+}
+.ua3.sheet.item .sheet-header img.profile {
+  border: 2px solid #000;
+}
+.ua3.sheet.item .sheet-header .item-subtitle {
+  flex: 0 0 100px;
+  height: 60px;
+  margin: 0;
+  padding: 5px;
+  text-align: right;
+  color: #7a7971;
+}
+.ua3.sheet.item .sheet-header .item-subtitle .item-type {
+  font-size: 24px;
+  line-height: 26px;
+  margin: 0;
+}
+.ua3.sheet.item .sheet-header .item-subtitle .item-status {
+  font-size: 16px;
+  line-height: 24px;
+}
+.ua3.sheet.item .sheet-navigation {
+  margin-bottom: 5px;
+}
+.ua3.sheet.item .sheet-navigation .item {
+  font-size: 18px;
+}
+.ua3.sheet.item .sheet-body {
+  overflow: hidden;
+}
+.ua3.sheet.item .sheet-body .tab {
+  padding: 0 5px;
+  overflow: hidden auto;
+}
+.ua3.sheet.item .sheet-body .item-properties {
+  flex: 0 0 120px;
+  margin: 5px 5px 5px 0;
+  padding-right: 5px;
+  border-right: 2px groove #eeede0;
+}
+.ua3.sheet.item .sheet-body .item-properties .form-group {
+  margin: 0;
+}
+.ua3.sheet.item .sheet-body .item-properties .form-group label {
+  line-height: 20px;
+}
+.ua3.sheet.item .sheet-body .item-properties .form-group input {
+  text-align: right;
+}
+.ua3.sheet.item .sheet-body .item-properties .properties-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ua3.sheet.item .sheet-body .item-properties .properties-list li {
+  margin: 3px 0;
+  padding: 0 2px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+}
+.ua3.sheet.item .details input[type="text"],
+.ua3.sheet.item .details input[type="number"],
+.ua3.sheet.item .details select {
+  height: 24px;
+  border: 1px solid #7a7971;
+  background: rgba(0, 0, 0, 0.05);
+}
+.ua3.sheet.item .details .form-group span {
+  text-align: center;
+  line-height: 24px;
+}
+.ua3.sheet.item .details .form-group.input-select select {
+  flex: 1.8;
+}
+.ua3.sheet.item .details .form-group.input-select-select select {
+  flex: 1.5;
+}
+.ua3.sheet.item .details .form-group.uses-per .form-fields {
+  flex-wrap: nowrap;
+}
+.ua3.sheet.item .details .form-group.uses-per input {
+  flex: 0 0 32px;
+}
+.ua3.sheet.item .details .form-group.uses-per span {
+  flex: 0 0 16px;
+  margin: 0 4px 0 0;
+}
+.ua3.sheet.item .details span.sep {
+  flex: 0 0 8px;
+}
+.ua3.sheet.item .details .prepared {
+  flex: 1.3 !important;
+  text-align: right;
+  padding-right: 10px;
+}
+.ua3.sheet.item .details .spell-materials {
+  flex: 0 0 100%;
+  margin: 0.25em 0;
+  justify-content: flex-end;
+}
+.ua3.sheet.item .details .spell-materials label {
+  flex: 0 0 64px;
+  text-align: right;
+  margin-right: 5px;
+  font-size: 12px;
+  line-height: 24px;
+}
+.ua3.sheet.item .details .spell-materials input[type="text"] {
+  flex: 0 0 48px;
+  margin-right: 10px;
+}
+.ua3.sheet.item h4.damage-header {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  line-height: 24px;
+  color: #4b4a44;
+}
+.ua3.sheet.item .damage-parts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ua3.sheet.item .damage-parts .damage-part {
+  flex: 0 0 100%;
+  padding: 0;
+}
+.ua3.sheet.item .damage-parts .damage-part input {
+  flex: 3;
+}
+.ua3.sheet.item .damage-parts .damage-part select {
+  margin-left: 5px;
+  flex: 1;
+}
+.ua3.sheet.item .damage-control {
+  width: 18px;
+  flex: 0 0 18px;
+  line-height: 24px;
+  float: right;
+  text-align: right;
+  color: #7a7971;
+}
+.ua3.sheet.item .recharge.form-group span {
+  text-align: right;
+  padding-right: 3px;
+}
+.ua3.sheet.item .recharge.form-group input[type="text"] {
+  flex: 0 0 32px;
+  text-align: center;
+}
+.ua3.sheet.item .recharge.form-group label.checkbox {
+  flex: none;
+}
+.ua3.sheet.item .recharge.form-group label.checkbox input {
+  width: 16px;
+  height: 16px;
+  top: 4px;
+}
+.ua3.sheet.item .weapon-properties label.checkbox {
+  flex: 0 0 98px;
+}
+.ua3.sheet.item .loot-header {
+  margin-bottom: 10px;
+}
+.ua3.sheet.actor {
+  min-height: 400px;
+  max-height: 95%;
+  min-width: 780px;
+  margin: 0px;
+  padding: 0px;
+  background: rgba(240, 240, 240, 0.1);
+  /*===============================================
+  Identities
+  ===============================================*/
+  /*===============================================
+  Identities
+  ===============================================*/
+  /*===============================================
+  Effects
+  ===============================================*/
+  /*===============================================
+  Abilities
+  ===============================================*/
+  /*===============================================
+  Stress
+  ===============================================*/
+  /* ----------------------------------------- */
+  /*  Sheet Header                             */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Item Details Form                        */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Item Actions                             */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Item Actions                             */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Loot Sheet (No Tabs)                     */
+  /* ----------------------------------------- */
+}
+.ua3.sheet.actor header.window-header {
+  background-color: DarkBlue;
+}
+.ua3.sheet.actor div.paperclip {
+  z-index: 2;
+  position: absolute;
+  top: 68px;
+  left: 15px;
+}
+.ua3.sheet.actor div.postit {
+  z-index: 2;
+  position: absolute;
+  top: 85px;
+  left: 915px;
+}
+.ua3.sheet.actor div.characterPic {
+  -ms-transform: rotate(1deg);
+  /* IE 9 */
+  -webkit-transform: rotate(1deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(1deg);
+  -moz-box-shadow: 3px 3px 1px #e8bb4d;
+  -webkit-box-shadow: 3px 3px 1px #e8bb4d;
+  box-shadow: 3px 3px 1px #e8bb4d;
+  z-index: 1;
+  position: relative;
+}
+.ua3.sheet.actor #context-menu {
+  width: 100px;
+  min-width: 100px;
+}
+.ua3.sheet.actor div.abilityLabel {
+  font-weight: bold;
+}
+.ua3.sheet.actor div.abilityValue {
+  padding-left: 10px;
+  text-align: right;
+}
+.ua3.sheet.actor div.stress {
+  width: 20px;
+  height: 20px;
+  font-size: 10pt;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.ua3.sheet.actor div.stressUnchecked {
+  color: darkgrey;
+  background-color: whitesmoke;
+  border: 1px solid darkgrey;
+}
+.ua3.sheet.actor div.stressChecked {
+  color: white;
+  background-color: #e60000;
+  border: 1px solid darkred;
+}
+.ua3.sheet.actor .sheet-header img.profile {
+  border: 2px solid #000;
+}
+.ua3.sheet.actor .sheet-header .item-subtitle {
+  flex: 0 0 100px;
+  height: 60px;
+  margin: 0;
+  padding: 5px;
+  text-align: right;
+  color: #7a7971;
+}
+.ua3.sheet.actor .sheet-header .item-subtitle .item-type {
+  font-size: 24px;
+  line-height: 26px;
+  margin: 0;
+}
+.ua3.sheet.actor .sheet-header .item-subtitle .item-status {
+  font-size: 16px;
+  line-height: 24px;
+}
+.ua3.sheet.actor .sheet-navigation {
+  margin-bottom: 5px;
+}
+.ua3.sheet.actor .sheet-navigation .item {
+  font-size: 18px;
+}
+.ua3.sheet.actor .sheet-body {
+  overflow: hidden;
+}
+.ua3.sheet.actor .sheet-body .tab {
+  padding: 0 5px;
+  overflow: hidden auto;
+}
+.ua3.sheet.actor .sheet-body .item-properties {
+  flex: 0 0 120px;
+  margin: 5px 5px 5px 0;
+  padding-right: 5px;
+  border-right: 2px groove #eeede0;
+}
+.ua3.sheet.actor .sheet-body .item-properties .form-group {
+  margin: 0;
+}
+.ua3.sheet.actor .sheet-body .item-properties .form-group label {
+  line-height: 20px;
+}
+.ua3.sheet.actor .sheet-body .item-properties .form-group input {
+  text-align: right;
+}
+.ua3.sheet.actor .sheet-body .item-properties .properties-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ua3.sheet.actor .sheet-body .item-properties .properties-list li {
+  margin: 3px 0;
+  padding: 0 2px;
+  background: rgba(240, 240, 240, 0.1);
+  border: 2px groove #eeede0;
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+}
+.ua3.sheet.actor .details input[type="text"],
+.ua3.sheet.actor .details input[type="number"],
+.ua3.sheet.actor .details select {
+  height: 24px;
+  border: 1px solid #7a7971;
+  background: rgba(240, 240, 240, 0.1);
+}
+.ua3.sheet.actor .details .form-group span {
+  text-align: center;
+  line-height: 24px;
+}
+.ua3.sheet.actor .details .form-group.input-select select {
+  flex: 1.8;
+}
+.ua3.sheet.actor .details .form-group.input-select-select select {
+  flex: 1.5;
+}
+.ua3.sheet.actor .details .form-group.uses-per .form-fields {
+  flex-wrap: nowrap;
+}
+.ua3.sheet.actor .details .form-group.uses-per input {
+  flex: 0 0 32px;
+}
+.ua3.sheet.actor .details .form-group.uses-per span {
+  flex: 0 0 16px;
+  margin: 0 4px 0 0;
+}
+.ua3.sheet.actor .details span.sep {
+  flex: 0 0 8px;
+}
+.ua3.sheet.actor .details .prepared {
+  flex: 1.3 !important;
+  text-align: right;
+  padding-right: 10px;
+}
+.ua3.sheet.actor .details .spell-materials {
+  flex: 0 0 100%;
+  margin: 0.25em 0;
+  justify-content: flex-end;
+}
+.ua3.sheet.actor .details .spell-materials label {
+  flex: 0 0 64px;
+  text-align: right;
+  margin-right: 5px;
+  font-size: 12px;
+  line-height: 24px;
+}
+.ua3.sheet.actor .details .spell-materials input[type="text"] {
+  flex: 0 0 48px;
+  margin-right: 10px;
+}
+.ua3.sheet.actor h4.damage-header {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  line-height: 24px;
+  color: #4b4a44;
+}
+.ua3.sheet.actor .damage-parts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ua3.sheet.actor .damage-parts .damage-part {
+  flex: 0 0 100%;
+  padding: 0;
+}
+.ua3.sheet.actor .damage-parts .damage-part input {
+  flex: 3;
+}
+.ua3.sheet.actor .damage-parts .damage-part select {
+  margin-left: 5px;
+  flex: 1;
+}
+.ua3.sheet.actor .damage-control {
+  width: 18px;
+  flex: 0 0 18px;
+  line-height: 24px;
+  float: right;
+  text-align: right;
+  color: #7a7971;
+}
+.ua3.sheet.actor .recharge.form-group span {
+  text-align: right;
+  padding-right: 3px;
+}
+.ua3.sheet.actor .recharge.form-group input[type="text"] {
+  flex: 0 0 32px;
+  text-align: center;
+}
+.ua3.sheet.actor .recharge.form-group label.checkbox {
+  flex: none;
+}
+.ua3.sheet.actor .recharge.form-group label.checkbox input {
+  width: 16px;
+  height: 16px;
+  top: 4px;
+}
+.ua3.sheet.actor .weapon-properties label.checkbox {
+  flex: 0 0 98px;
+}
+.ua3.sheet.actor .loot-header {
+  margin-bottom: 10px;
+}
+/* ----------------------------------------- */
+/*  Chat Cards
+/* ----------------------------------------- */
+.ua3.chat-card {
+  font-style: normal;
+  font-size: 20px;
+}
+.ua3.chat-card .card-header {
+  padding: 3px 0;
+  border-top: 2px groove #FFF;
+  border-bottom: 2px groove #FFF;
+}
+.ua3.chat-card .card-header img {
+  flex: 0 0 36px;
+  margin-right: 5px;
+}
+.ua3.chat-card .card-header h3 {
+  flex: 1;
+  margin: 0;
+  line-height: 36px;
+  font-family: "Palatino Linotype", serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #4b4a44;
+}
+.ua3.chat-card .card-header h3:hover {
+  color: #111;
+  text-shadow: 0 0 10px red;
+}
+.ua3.chat-card .card-content {
+  margin: 5px 0;
+}
+.ua3.chat-card .card-content h3 {
+  font-size: 12px;
+  margin: 0;
+  font-weight: bold;
+}
+.ua3.chat-card .card-content > * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+.ua3.chat-card .card-buttons {
+  margin: 5px 0;
+}
+.ua3.chat-card .card-buttons span {
+  display: block;
+  line-height: 28px;
+  text-align: center;
+  border: 1px solid #7a7971;
+}
+.ua3.chat-card .card-buttons button {
+  font-size: 12px;
+  height: 24px;
+  line-height: 20px;
+  margin: 2px 0;
+}
+.ua3.chat-card .card-footer {
+  padding: 3px 0 0;
+  border-top: 2px groove #FFF;
+}
+.ua3.chat-card .card-footer span {
+  border-right: 2px groove #FFF;
+  padding: 0 3px 0 0;
+  font-size: 10px;
+}
+.ua3.chat-card .card-footer span:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+.dice-roll .dice-total.success {
+  color: inherit;
+  background: #c7d0c0;
+  border: 1px solid #006c00;
+}
+.dice-roll .dice-total.failure {
+  color: inherit;
+  background: #ffdddd;
+  border: 1px solid #6e0000;
+}
+.dice-roll .dice-total.critical {
+  color: green;
+}
+.dice-roll .dice-total.fumble {
+  color: red;
+}

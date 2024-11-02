@@ -1,0 +1,101 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="flexrow">
+      <img class="profile" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="20" width="20" />
+      <div class="header-fields">
+        <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Weapon name" /></h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary" style="padding: 2px 0 8px 0">
+    <div class="flexrow" style="width: 100%; padding: 10px">
+      <textarea name="system.description" style="height: 30px">{{system.description}}</textarea>
+    </div>
+
+    <div style="display: table; border-collapse: seperate; border-spacing: 15px 10px;">
+      <div style="display: table-row">
+        <div style="display: table-cell">
+          <label for="system.attackWith" style="display: inline-block; width: 80px">Attack with</label>
+          <select id="system.attackWith" name="system.attackWith">
+            <option value="struggle" {{#if (eq system.attackWith "struggle")}}selected{{/if}}>Struggle</option>
+            <option value="firearms" {{#if (eq system.attackWith "firearms")}}selected{{/if}}>Firearms</option>
+          </select>
+        </div>
+        <div style="display: table-cell">
+          <label for="system.maxRange" style="display: inline-block; width: 80px">Range</label>
+          <select id="system.maxRange" name="system.maxRange">
+            <option value="melee" {{#if (eq system.maxRange "melee")}}selected{{/if}}>Melee</option>
+            <option value="short" {{#if (eq system.maxRange "short")}}selected{{/if}}>Short</option>
+            <option value="medium" {{#if (eq system.maxRange "medium")}}selected{{/if}}>Medium</option>
+            <option value="long" {{#if (eq system.maxRange "long")}}selected{{/if}}>Long</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: table-row">
+        <div style="display: table-cell">
+          <label for="system.damageType" style="display: inline-block; width: 80px">Damage Type</label>
+          <select id="system.damageType" name="system.damageType">
+            <option value="sum" {{#if (eq system.damageType "sum")}}selected{{/if}}>Sum of the Result</option>
+            <option value="result" {{#if (eq system.damageType "result")}}selected{{/if}}>Equal to the Result</option>
+          </select>
+        </div>
+        <div style="display: table-cell">
+          <label for="system.damageModifier" style="display: inline-block; width: 80px">Modifier</label>
+          <input type="text" name="system.damageModifier" value="{{system.damageModifier}}" style="text-align: right; width: 50px" />
+        </div>
+      </div>
+
+      <div style="display: table-row">
+        <div style="display: table-cell">
+          <label for="system.maxDamage" style="display: inline-block; width: 80px">Max Damage</label>
+          <input type="text" name="system.maxDamage" value="{{system.maxDamage}}" style="text-align: right; width: 50px" />
+        </div>
+        <div style="display: table-cell">
+          <label for="system.missAutoDamage" style="display: inline-block; width: 80px">Auto Damage</label>
+          <input type="text" name="system.missAutoDamage" value="{{system.missAutoDamage}}"
+            style="text-align: right; width: 50px" />
+        </div>
+      </div>
+
+      <div style="display: table-row">
+        <div style="display: table-cell">
+          <label for="system.woundType" style="display: inline-block; width: 80px">Wound Type</label>
+          <select id="system.woundType" name="system.woundType">
+            <option value="burn" {{#if (eq system.woundType "burn")}}selected{{/if}}>Burning</option>
+            <option value="crush" {{#if (eq system.woundType "crush")}}selected{{/if}}>Crushing</option>
+            <option value="irritant" {{#if (eq system.woundType "irritant")}}selected{{/if}}>Irritant</option>
+            <option value="pierce" {{#if (eq system.woundType "pierce")}}selected{{/if}}>Piercing</option>
+            <option value="slash" {{#if (eq system.woundType "slash")}}selected{{/if}}>Slashing</option>
+            <option value="stun" {{#if (eq system.woundType "stun")}}selected{{/if}}>Stun</option>
+            <option value="special" {{#if (eq system.woundType "special")}}selected{{/if}}>Special</option>
+          </select>
+        </div>
+        <div style="display: table-cell">
+          <label for="system.magazine" style="display: inline-block; width: 80px">Magazine</label>
+          <input type="text" name="system.magazine" value="{{system.magazine}}"
+            style="text-align: right; width: 50px" />
+        </div>
+      </div>
+
+      <div style="display: table-row">
+        <div style="display: table-cell; vertical-align: middle">
+          <label for="system.canMultishot" style="display: inline-block; width: 80px">Multi-Shot</label>
+          <input name="system.canMultishot" type="checkbox" {{checked system.canMultishot}} style="height: 12px; width: 12px" />
+        </div>
+        <div style="display: table-cell; vertical-align: middle">
+          <label for="system.canAutofire" style="display: inline-block; width: 80px">Autofire</label>
+          <input name="system.canAutofire" type="checkbox" {{checked system.canAutofire}} style="height: 12px; width: 12px"/>
+        </div>
+      </div>
+
+      <div>
+        <span for="system.actionDescr" style="display: inline-block; width: 80px">Action</span>
+        <input type="text" name="system.actionDescr" value="{{system.actionDescr}}" placeholder="Action description"/>
+      </div>
+
+    </div>
+  </div>
+
+</form>

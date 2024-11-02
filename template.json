@@ -1,0 +1,432 @@
+{
+  "Actor": {
+    "types": ["character"],
+    "templates": {
+      "common": {
+        "attributes": {
+          "speed": 5
+        },
+        "details": {
+          "description": {
+            "value": ""
+          },
+          "biography": {
+            "value": ""
+          },
+          "pronouns": {
+            "value": ""
+          },
+          "notes": {
+            "value": "",
+            "GM": false
+          }
+        },
+        "identities": {}
+      },
+      "abilities": {
+        "ability": {
+          "connect": {
+            "value": 65,
+            "flipflop": false,
+            "recheck": false,
+            "difficulty": 0,
+            "hunch": 0,
+            "label": "Connect",
+            "description": "The ability to empathize and form a human connection with others.",
+            "gauge": "violence",
+            "opposed": "struggle",
+            "beat": "up"
+          },
+          "struggle": {
+            "value": 15,
+            "flipflop": false,
+            "recheck": false,
+            "difficulty": 0,
+            "hunch": 0,
+            "label": "Struggle",
+            "description": "The ability to employ physical force against others.",
+            "gauge": "violence",
+            "opposed": "connect",
+            "beat": "down"
+          },
+          "notice": {
+            "value": 65,
+            "flipflop": false,
+            "recheck": false,
+            "difficulty": 0,
+            "hunch": 0,
+            "label": "Notice",
+            "description": "Your level of awareness of the world around you.",
+            "gauge": "unnatural",
+            "opposed": "secrecy",
+            "beat": "up"
+          },
+          "secrecy": {
+            "value": 15,
+            "flipflop": false,
+            "recheck": false,
+            "difficulty": 0,
+            "hunch": 0,
+            "label": "Secrecy",
+            "description": "The ability to discern hidden or occult matters.",
+            "gauge": "unnatural",
+            "opposed": "notice",
+            "beat": "down"
+          },
+          "status": {
+            "value": 65,
+            "flipflop": false,
+            "recheck": false,
+            "difficulty": 0,
+            "hunch": 0,
+            "label": "Status",
+            "description": "Your level of social engagement and position.",
+            "gauge": "isolation",
+            "opposed": "pursuit",
+            "beat": "up"
+          },
+          "pursuit": {
+            "value": 15,
+            "flipflop": false,
+            "recheck": false,
+            "difficulty": 0,
+            "hunch": 0,
+            "label": "Pursuit",
+            "description": "The ability to chase after or run away from people.",
+            "gauge": "isolation",
+            "opposed": "status",
+            "beat": "down"
+          },
+          "fitness": {
+            "value": 65,
+            "flipflop": false,
+            "recheck": false,
+            "difficulty": 0,
+            "hunch": 0,
+            "label": "Fitness",
+            "description": "Your level of physical fitness and athletic ability.",
+            "gauge": "helplessness",
+            "opposed": "dodge",
+            "beat": "up"
+          },
+          "dodge": {
+            "value": 15,
+            "flipflop": false,
+            "recheck": false,
+            "difficulty": 0,
+            "hunch": 0,
+            "label": "Dodge",
+            "description": "Your ability to avoid physical harm directed against you.",
+            "gauge": "helplessness",
+            "opposed": "fitness",
+            "beat": "down"
+          },
+          "knowledge": {
+            "value": 65,
+            "flipflop": false,
+            "recheck": false,
+            "difficulty": 0,
+            "hunch": 0,
+            "label": "Knowledge",
+            "description": "Your level of education and general knowledge.",
+            "gauge": "self",
+            "opposed": "lie",
+            "beat": "up"
+          },
+          "lie": {
+            "value": 15,
+            "flipflop": false,
+            "recheck": false,
+            "difficulty": 0,
+            "hunch": 0,
+            "label": "Lie",
+            "description": "Your ability to convince others to believe falsehoods.",
+            "gauge": "self",
+            "opposed": "knowledge",
+            "beat": "down"
+          }
+        }
+      },
+      "gauges": {
+        "gauge": {
+          "violence": {
+            "label": "Violence",
+            "hardened": 0,
+            "failed": 0,
+            "upbeat": "connect",
+            "downbeat": "struggle",
+            "defendWith": "fitness",
+            "coerceWith": "struggle"
+          },
+          "unnatural": {
+            "label": "Unnatural",
+            "hardened": 0,
+            "failed": 0,
+            "upbeat": "notice",
+            "downbeat": "secrecy",
+            "defendWith": "knowledge",
+            "coerceWith": "secrecy"
+          },
+          "isolation": {
+            "label": "Isolation",
+            "hardened": 0,
+            "failed": 0,
+            "upbeat": "status",
+            "downbeat": "pursuit",
+            "defendWith": "connect",
+            "coerceWith": "status"
+          },
+          "helplessness": {
+            "label": "Helplessness",
+            "hardened": 0,
+            "failed": 0,
+            "upbeat": "fitness",
+            "downbeat": "dodge",
+            "defendWith": "status",
+            "coerceWith": "connect"
+          },
+          "self": {
+            "label": "Self",
+            "hardened": 0,
+            "failed": 0,
+            "upbeat": "knowledge",
+            "downbeat": "lie",
+            "defendWith": "notice",
+            "coerceWith": "knowledge"
+          }
+        }
+      }
+    },
+
+    "character": {
+      "templates": [
+        "common",
+        "abilities",
+        "gauges"
+      ],
+      "obsession": {
+        "description": "",
+        "identity": ""
+      },
+      "passion": {
+        "rage": {
+          "description": "",
+          "triggered": false,
+          "recheck": false,
+          "flipflop": false
+        },
+        "fear": {
+          "description": "",
+          "gauge": "",
+          "triggered": false,
+          "recheck": false,
+          "flipflop": false
+        },
+        "noble": {
+          "description": "",
+          "triggered": false,
+          "recheck": false,
+          "flipflop": false
+        }
+      },
+      "initiative": {
+        "fixed": false,
+        "label": "Fisticuffs",
+        "value": null,
+        "type": "struggle"
+      },
+      "relationship": {
+        "favorite": {
+          "value": 0,
+          "flipflop": false,
+          "recheck": false,
+          "difficulty": 0,
+          "hunch": 0,
+          "label": "Favorite",
+          "description": "",
+          "base": "status",
+          "advance": false
+        },
+        "guru": {
+          "value": 0,
+          "flipflop": false,
+          "recheck": false,
+          "difficulty": 0,
+          "hunch": 0,
+          "label": "Guru",
+          "description": "",
+          "base": "notice",
+          "advance": false
+        },
+        "mentor": {
+          "value": 0,
+          "flipflop": false,
+          "recheck": false,
+          "difficulty": 0,
+          "hunch": 0,
+          "label": "Mentor",
+          "description": "",
+          "base": "connect",
+          "advance": false
+        },
+        "responsibility": {
+          "value": 0,
+          "flipflop": false,
+          "recheck": false,
+          "difficulty": 0,
+          "hunch": 0,
+          "label": "Responsibility",
+          "description": "",
+          "base": "knowledge",
+          "advance": false
+        },
+        "protege": {
+          "value": 0,
+          "flipflop": false,
+          "recheck": false,
+          "difficulty": 0,
+          "hunch": 0,
+          "label": "Protégé",
+          "description": "",
+          "base": "fitness",
+          "advance": false
+        }
+      },
+      "charge": {
+        "broadcast": true,
+        "minor": 0,
+        "significant": 0,
+        "major": 0
+      },
+      "wounds": {
+        "maximum": 50,
+        "current": 0,
+        "injuries": ""
+      },
+      "combat": {
+        "focus": 0,
+        "aim": 0,
+        "dodge": false
+      },
+      "hunches": {},
+      "mentalissues": "",
+      "flags": {
+        "isNameKnown": true
+      }
+    }
+  },
+
+  "Item": {
+    "types": ["identity","weapon","archetype","school","spell","ritual"],
+    "templates": {
+      "base": {
+        "disabled": false,
+        "description": ""
+      }
+    },
+
+    "ritual": {
+      "templates": [
+        "base"
+      ],
+      "charges": 0,
+      "chargeType": ""
+    },
+
+    "archetype": {
+      "templates": [
+        "base"
+      ],
+      "taboo": "",
+      "symbols": "",
+      "notes": "",
+      "channelnotes": "",
+      "channels": {
+        "1": {
+          "minimum": 1,
+          "blurb": "",
+          "description": "",
+          "chattext": "",
+          "avatarcheck": false
+        },
+        "51": {
+          "minimum": 51,
+          "blurb": "",
+          "description": "",
+          "chattext": "",
+          "avatarcheck": false
+        },
+        "71": {
+          "minimum": 71,
+          "blurb": "",
+          "description": "",
+          "chattext": "",
+          "avatarcheck": false
+        },
+        "91": {
+          "minimum": 91,
+          "blurb": "",
+          "description": "",
+          "chattext": "",
+          "avatarcheck": false
+        }
+      }
+    },
+
+    "school": {
+      "templates": [
+        "base"
+      ],
+      "omega": 0,
+      "domain": "",
+      "taboo": "",
+      "generate": {
+        "minor": "",
+        "significant": "",
+        "major": ""
+      },
+      "spells": {}
+    },
+    
+    "identity" : {
+      "templates": [
+        "base"
+      ],
+      "type": "mundane",
+      "value": 0,
+      "flipflop": false,
+      "recheck": false,
+      "difficulty": 0,
+      "hunch": 0,
+      "obsession": false,
+      "xp": false,
+      "ocic": "",
+      "notes": "",
+      "feature1": "",
+      "feature1descr": "",
+      "feature2": "",
+      "feature2descr": "",
+      "feature2active": true,
+      "feature3": "",
+      "feature3descr": "",
+      "feature3active": true
+    },
+
+    "weapon": {
+      "templates": [
+        "base"
+      ],
+      "actionDescr": "",
+      "attackWith": "struggle",
+      "damageType": "sum",
+      "damageModifier": 0,
+      "maxRange": "melee",
+      "missAutoDamage": 0,
+      "maxDamage": 20,
+      "woundType": "crush",
+      "magazine": 0,
+      "canMultishot": false,
+      "canAutofire": false
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="flexrow">
+      <div class="header-fields">
+        <h2 class="charname" style="border: none">
+          <input name="name" type="text" value="{{item.name}}" placeholder="Ritual name" />
+        </h2>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary" style="padding: 2px 0 8px 0">
+    <div style="margin: 4px 0 6px 0; text-align: center">
+      <span style="margin-top: -2px">Charges:</span>
+      <select id="system.charges" name="system.charges">
+        <option value=0 {{#if (eq system.charges "0")}}selected{{/if}}>0</option>
+        <option value=1 {{#if (eq system.charges "1")}}selected{{/if}}>1</option>
+        <option value=2 {{#if (eq system.charges "2")}}selected{{/if}}>2</option>
+        <option value=3 {{#if (eq system.charges "3")}}selected{{/if}}>3</option>
+        <option value=4 {{#if (eq system.charges "4")}}selected{{/if}}>4</option>
+        <option value=5 {{#if (eq system.charges "5")}}selected{{/if}}>5</option>
+      </select>&nbsp;
+      <select id="system.chargeType" name="system.chargeType">
+        <option value="" {{#if (eq system.chargeType "")}}selected{{/if}}>N/A</option>
+        <option value="minor" {{#if (eq system.chargeType "minor")}}selected{{/if}}>Minor</option>
+        <option value="significant" {{#if (eq system.chargeType "significant")}}selected{{/if}}>Significant</option>
+      </select>
+    </div>
+    <div class="flexrow" style="height: 400px; width: 100%; padding: 5px;">
+      {{editor
+      system.description
+      target="system.description"
+      button=true
+      editable=editable
+      }}
+    </div>
+  </div>
+
+</form>

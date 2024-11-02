@@ -1,0 +1,12 @@
+<form>
+  <div style="text-align: center">Select the target and value of the Hunch.</div>
+
+  <div style="margin: 6px 0 10px 0; text-align: center">
+    <select name="hunchTarget" style="font-size: 1em; font-family: Signika, sans-serif">
+      {{#each choices}}
+      <option value="{{@key}}">{{this.label}}</option>
+      {{/each}}
+    </select>
+    <input name="hunchValue" type="number" min="1" max="100" step="1"  style="margin-left: 10px; width: 40px; text-align: center" oninput="(validity.valid)||(value='');">
+  </div>
+</form>

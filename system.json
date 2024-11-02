@@ -1,0 +1,46 @@
+{
+  "id": "ua3",
+  "title": "Unknown Armies v3",
+  "description": "A system for playing Unknown Armies v3.",
+  "version": "1.1.1",
+  "compatibility": {
+    "minimum": "11.315",
+    "verified": "12.0"
+  },
+  "authors": [
+    {
+      "name": "Fairlyhyperman",
+      "email": "mac@jdrpg.com",
+      "discord": "Fairlyhyperman"
+    }
+  ],
+  "url": "",
+  "license": "",
+  "readme": "",
+  "bugs": "",
+  "changelog": "",
+  "scripts": [],
+  "esmodules": ["module/ua3.js"],
+  "styles": ["styles/ua3.css"],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "socket": false,
+  "manifest": "",
+  "download": "https://www.twincitiesrpg.com/files/Foundry/ua3/ua3-1-1-1.zip",
+  "initiative": "",
+  "gridDistance": 1,
+  "grid": {
+    "type": 1,
+    "distance": 1,
+    "units": "m",
+    "diagonals": 4
+  },
+  "primaryTokenAttribute": "",
+  "secondaryTokenAttribute": ""
+}

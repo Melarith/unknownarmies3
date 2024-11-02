@@ -1,0 +1,25 @@
+<form style="padding: 5px">
+  <div style="text-align: center">
+    Rolls to {{skillAction}} <b>{{skillTarget}}</b>
+  </div>
+
+  <div class="resultBlock" style="text-align: center; margin-top: 5px; padding: 5px; background-color: whitesmoke; border: 2px solid">
+    <div style="display: table; width: 100%">
+      <div style="display: table-row">
+        <div style="display: table-cell; width: 20px; text-align: left; vertical-align: top">
+            <i class="flipflop fas fa-retweet" style="cursor: pointer; display: none"></i>
+        </div>
+        <div style="display: table-cell; text-align: center; vertical-align: middle">
+          <div style="font-size: 1.1em">
+            <b>{{resultValue}}</b>
+            <span style="padding: 0 8px 0 8px">vs</span>
+            <b>{{targetMaximum}}</b><span class="resultMinimum" style="display: none">, difficulty <b>{{targetMinimum}}</b></span></div>
+          <div class="resultDescr" style="font-weight: bold; margin-top: 5px"></div>
+        </div>
+        <div style="display: table-cell; width: 20px; text-align: right; vertical-align: top">
+          <i class="recheck fas fa-redo-alt" style="cursor: pointer; display: none"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

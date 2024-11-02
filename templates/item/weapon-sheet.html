@@ -1,0 +1,113 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="flexrow">
+      <img class="profile" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="20" width="20" />
+      <div class="header-fields">
+        <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Weapon name" /></h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary" style="padding: 8px 0 8px 0">
+    <div class="flexrow" style="width: 100%; height: 100px">
+      {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+    </div>
+
+    <div style="display: table; border-collapse: seperate; border-spacing:15px 10px;">
+      <div style="display: table-row">
+        <div style="display: table-cell">
+          <label for="data.attackWith" style="display: inline-block; width: 80px">Attack with</label>
+          <select id="data.attackWith" name="data.attackWith">
+            {{#select data.attackWith}}
+            <option value="struggle">Struggle</option>
+            <option value="firearms">Firearms</option>
+            {{/select}}
+          </select>
+        </div>
+        <div style="display: table-cell">
+          <label for="data.maxRange" style="display: inline-block; width: 80px">Range</label>
+          <select id="data.maxRange" name="data.maxRange">
+            {{#select data.maxRange}}
+            <option value="melee">Melee</option>
+            <option value="short">Short</option>
+            <option value="medium">Medium</option>
+            <option value="long">Long</option>
+            {{/select}}
+          </select>
+        </div>
+      </div>
+
+      <div style="display: table-row">
+        <div style="display: table-cell">
+          <label for="data.damageType" style="display: inline-block; width: 80px">Damage Type</label>
+          <select id="data.damageType" name="data.damageType">
+            {{#select data.damageType}}
+            <option value="sum">Sum of the Result</option>
+            <option value="result">Equal to the Result</option>
+            {{/select}}
+          </select>
+        </div>
+        <div style="display: table-cell">
+          <label for="data.damageModifier" style="display: inline-block; width: 80px">Modifier</label>
+          <input type="text" name="data.damageModifier" value="{{data.damageModifier}}" style="text-align: right; width: 50px" />
+        </div>
+      </div>
+
+      <div style="display: table-row">
+        <div style="display: table-cell">
+          <label for="data.maxDamage" style="display: inline-block; width: 80px">Max Damage</label>
+          <input type="text" name="data.maxDamage" value="{{data.maxDamage}}" style="text-align: right; width: 50px" />
+        </div>
+        <div style="display: table-cell">
+          <label for="data.missAutoDamage" style="display: inline-block; width: 80px">Auto Damage</label>
+          <input type="text" name="data.missAutoDamage" value="{{data.missAutoDamage}}"
+            style="text-align: right; width: 50px" />
+        </div>
+      </div>
+
+      <div style="display: table-row">
+        <div style="display: table-cell">
+          <label for="data.woundType" style="display: inline-block; width: 80px">Wound Type</label>
+          <select id="data.woundType" name="data.woundType">
+            {{#select data.woundType}}
+            <option value="burn">Burning</option>
+            <option value="crush">Crushing</option>
+            <option value="pierce">Piercing</option>
+            <option value="slash">Slashing</option>
+            <option value="special">Special</option>
+            {{/select}}
+          </select>
+        </div>
+        <div style="display: table-cell">
+          <label for="data.magazine" style="display: inline-block; width: 80px">Magazine</label>
+          <input type="text" name="data.magazine" value="{{data.magazine}}"
+            style="text-align: right; width: 50px" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!--
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-navigation tabs" data-group="primary">
+    <a class="item active" data-tab="description">Description</a>
+    <a class="item" data-tab="stuff">Stuff</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    {{!-- Description Tab --}}
+    <div class="tab flexrow active" data-group="primary" data-tab="description">
+      {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}       
+    </div>
+
+    {{!-- Stuff Tab --}}
+    <div class="tab" data-group="primary" data-tab="stuff">
+      <div>
+        <input type="text" name="data.woundType" value="{{data.woundType}}" placeholder="Wound type" />
+      </div>
+    </div>
+  </section>
+  -->
+</form>

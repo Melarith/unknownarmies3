@@ -1,0 +1,31 @@
+<form>
+  <div style="text-align: center">{{{formula}}}</div>
+
+  <div style="margin: 6px 0 20px 0">
+    {{#if skills.choose}}
+    <div>You have an Identity that can substitute for the Ability, so please choose which you want to use:</div>
+    {{/if}}
+
+    <div class="selectSkill" style="display: table; margin: 0 auto">
+      {{#each skills.skills}}
+      <div style="display: table-row">
+        <div style="display: table-cell; padding-top: 5px">
+          <label style="cursor: pointer; padding-right: 20px">
+            <input type="radio" name="selectedSkill" value="{{@index}}" 
+              {{#if this.selected}} checked {{/if}}
+              style="margin-right: 10px; {{#unless ../skills.choose}}display: none;{{/unless}}"/>
+            <b>{{this.using}}</b>
+          </label>
+        </div>
+        <div style="display: table-cell; padding-top: 6px">
+          {{this.value}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 20px 0 20px 0">
+    <div class="lock" style="width: 100px">Lock In</div>
+  </div>
+</form>

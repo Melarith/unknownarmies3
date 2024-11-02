@@ -1,0 +1,115 @@
+<form class="{{cssClass}}" autocomplete="off" style="background-color: whitesmoke">
+  <header class="sheet-header" style="margin-bottom: 10px">
+    <div class="flexrow">
+      <div class="header-fields">
+        <div style="font-size: 14pt; font-weight: bold"><input name="name" type="text" value="{{item.name}}"
+            placeholder="School name" /></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class='flexrow tabbed round' data-group='primary' style="width: 100%" id='char-tabs'>
+    <ul>
+      <li data-tab="spells">Spells</li>
+      <li data-tab="charging">Charging</li>
+      <li data-tab="school" class="active">School</li>
+    </ul>
+  </nav>
+
+  <div class="tab-content flexrow"
+    style="height: 100%; border: 4px solid #f1d592; border-radius: 4px; padding: 5px; background-color: #f1d592">
+  
+    <div class="character tab active" data-group="primary" data-tab="school">
+      <div style="display: flex; gap: 5px; height: 100%;">
+        <div style="flex-grow: 1;">
+          <fieldset class="fieldBunch" style="height: 350px; margin-top: 10px; padding: 0 5px 5px 5px">
+            <legend style="font-size: 8pt">&nbsp;Description&nbsp;</legend>
+            <textarea name="system.description">{{system.description}}</textarea>
+          </fieldset>
+  
+          <div style="margin-top: 10px;">
+            <label style="font-weight: bold">&nbsp;Omega&nbsp;</label>
+            <select name="system.omega" style="background-color: whitesmoke">
+              {{#select system.omega}}
+              <option value="-2">-2</option>
+              <option value="-1">-1</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              {{/select}}
+            </select>
+          </div>
+
+          <fieldset class="fieldBunch" style="height: 100px; margin-top: 10px; padding: 0 5px 5px 5px">
+            <legend style="font-size: 8pt">&nbsp;Domain&nbsp;</legend>
+            <textarea name="system.domain">{{system.domain}}</textarea>
+          </fieldset>
+  
+          <fieldset class="fieldBunch" style="height: 150px; margin-top: 10px; padding: 0 5px 5px 5px">
+            <legend style="font-size: 8pt">&nbsp;Taboo&nbsp;</legend>
+            <textarea name="system.taboo">{{{system.taboo}}}</textarea>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  
+    <div class="character tab active" data-group="primary" data-tab="charging">
+      <div style="display: flex; gap: 5px; height: 100%;">
+        <div style="flex-grow: 1;">
+
+          <fieldset class="fieldBunch" style="height: 260px; margin-top: 10px; padding: 0 5px 5px 5px">
+            <legend style="font-size: 8pt">&nbsp;Minor&nbsp;</legend>
+              <textarea name="system.generate.minor">{{system.generate.minor}}</textarea>
+          </fieldset>
+
+          <fieldset class="fieldBunch" style="height: 260px; margin-top: 10px; padding: 0 5px 5px 5px">
+            <legend style="font-size: 8pt">&nbsp;Significant&nbsp;</legend>
+            <textarea name="system.generate.significant">{{system.generate.significant}}</textarea>
+          </fieldset>
+
+          <fieldset class="fieldBunch" style="height: 110px; margin-top: 10px; padding: 0 5px 5px 5px">
+            <legend style="font-size: 8pt">&nbsp;Major&nbsp;</legend>
+            <textarea name="system.generate.major">{{system.generate.major}}</textarea>
+          </fieldset>
+
+        </div>
+      </div>
+    </div>
+  
+    <div class="character tab active" data-group="primary" data-tab="spells">
+      <fieldset class="fieldBunch" style="display: flex; gap: 5px; height: 89%;">
+        <legend style="font-size: 8pt">&nbsp;Weird Shit I Can Do with {{item.name}}&nbsp;<span class="addSpell addButton">+</span></legend>
+        <div style="gap: 12px; width: 100%; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-content: stretch; align-items: flex-start;">
+          <div class="spelllist" style="width: 250px; order: 0; flex: 0 1 auto; align-self: stretch; border-right: 1px solid darkgrey">
+            <div style="font-size: 1.1em; border-bottom: 1px solid darkgrey; margin-bottom: 7px"><b>Minor</b></div>
+            {{#each system.spellType.minor}}
+              <div style="width: 250px; margin-bottom: 5px">
+                <i class="editSpell far fa-edit" data-spell="{{this.id}}" style="cursor: pointer; padding-right: 4px"></i>
+                <span class="spell" style="cursor: pointer" data-spell="{{this.id}}" title="{{this.synopsis}}">{{name}}</span>
+              </div>
+            {{/each}}
+            <div style="font-size: 1.1em; border-bottom: 1px solid darkgrey; margin: 20px 0 7px 0"><b>Significant</b></div>
+            {{#each system.spellType.significant}}
+            <div style="width: 250px; margin-bottom: 5px">
+              <i class="editSpell far fa-edit" data-spell="{{this.id}}" style="cursor: pointer; padding-right: 4px"></i>
+              <span class="spell" style="cursor: pointer" data-spell="{{this.id}}" title="{{this.synopsis}}">{{name}}</span>
+            </div>
+            {{/each}}
+          </div>
+          <div style="order: 0; flex: 1 1 auto; align-self: stretch;">
+            {{#each system.spells}}
+            <div class="spellDescr" data-spell="{{@key}}" style="display: none">
+              <div style="font-size: 1.2em; margin-bottom: 5px"><b>{{name}}</b></div>
+              <div><b>Cost</b>: {{this.charges}}{{#if this.chargeextra}}+{{/if}} {{this.chargetype}}</div>
+              <div style="margin-top: 10px">
+                <div>{{{this.description}}}</div>
+              </div>
+            </div>
+            {{/each}}
+           </div>
+        </div>
+      </fieldset>
+    </div>
+
+  </div>
+</form>

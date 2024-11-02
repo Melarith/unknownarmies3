@@ -1,0 +1,21 @@
+<form>
+  <div style="text-align: center">
+    <input name="effectName" type="text" style="width: 100px">
+  </div>
+
+  <div style="text-align: center">Select the target and value of the Effect.</div>
+
+  <div style="margin: 6px 0 10px 0; text-align: center">
+    <fieldset>
+      <legend>Target</legend>
+      {{#each choices}}
+      <input type="checkbox" name="effectTarget" value="this.key">{{this.label}}<br>
+      {{/each}}
+    </fieldset>
+  </div>
+
+  <div style="text-align: center">
+    <input name="effectValue" type="number" min="-80" max="100" step="5"
+      style="margin-left: 10px; width: 40px; text-align: center" oninput="(validity.valid)||(value='');">
+  </div>
+</form>

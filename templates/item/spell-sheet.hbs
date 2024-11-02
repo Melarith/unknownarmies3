@@ -1,0 +1,27 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <input type="hidden" name="id" value="{{id}}">
+  <div class="flexrow" style="margin-bottom: 10px">
+    <input name="name" type="text" value="{{name}}" style="font-weight: bold" placeholder="Spell name" />
+  </div>
+  <div>
+    <span style="padding-right: 10px; font-weight: bold">Cost</span>
+    <input name="charges" type="number" value="{{charges}}" maxlength="1" min="1" max="6"
+      style="width: 35px; text-align: center" oninput="(validity.valid)||(value='');" />
+    <select name="chargetype" style="margin-left: 10px">
+      {{#select chargetype}}
+      <option value="minor">Minor</option>
+      <option value="significant">Significant</option>
+      {{/select}}
+    </select>
+    <label style="padding-left: 5px">
+      <input name="chargeextra" type="checkbox" {{checked chargeextra}} style="width: 12px; height: 12px"/>
+      Can spend extra charges
+    </label>
+  </div>
+  <div class="flexrow" style="margin: 10px 0 10px 0">
+    <input name="synopsis" type="text" value="{{synopsis}}" placeholder="A brief synopsis of the spell" />
+  </div>
+  <div style="margin-top: 10px">
+    <textarea name="description" style="height: 400px" placeholder="The spell description goes here">{{description}}</textarea>
+  </div>
+</form>

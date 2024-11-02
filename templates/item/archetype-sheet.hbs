@@ -1,0 +1,62 @@
+<form class="{{cssClass}}" autocomplete="off" style="background-color: whitesmoke">
+  <header class="sheet-header" style="margin-bottom: 10px">
+    <div class="flexrow">
+      <div class="header-fields">
+        <div style="font-size: 14pt; font-weight: bold"><input name="name" type="text" value="{{item.name}}"
+            placeholder="Archetype name" /></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class='flexrow tabbed round' data-group='primary' style="width: 100%; background-color: rgba(240, 240, 240, 0.1);" id='char-tabs'>
+    <ul>
+      <li data-tab="channels">Channels</li>
+      <li data-tab="archetype" class="active">The Archetype</li>
+    </ul>
+  </nav>
+
+  <div class="tab-content flexrow"
+    style="height: 100%; border: 4px solid #f1d592; border-radius: 4px; padding: 5px; background-color: #f1d592">
+
+    <div class="character tab active" data-group="primary" data-tab="archetype">
+      <div style="display: flex; gap: 5px; height: 100%;">
+        <div style="flex-grow: 1;">
+          <fieldset class="fieldBunch"
+            style="height: 200px; margin-top: 10px; padding: 0 5px 5px 5px">
+            <legend style="font-size: 8pt">&nbsp;Description&nbsp;</legend>
+            <textarea name="system.description">{{system.description}}</textarea>
+          </fieldset>
+          
+          <fieldset class="fieldBunch"
+            style="height: 80px; margin-top: 10px; padding: 0 5px 5px 5px">
+            <legend style="font-size: 8pt">&nbsp;Symbols&nbsp;</legend>
+            <textarea name="system.symbols">{{system.symbols}}</textarea>
+          </fieldset>
+          
+          <fieldset class="fieldBunch"
+            style="height: 150px; margin-top: 10px; padding: 0 5px 5px 5px">
+            <legend style="font-size: 8pt">&nbsp;Taboo&nbsp;</legend>
+            <textarea name="system.taboo">{{system.taboo}}</textarea>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <div class="character tab active" data-group="primary" data-tab="channels">
+      <div style="display: flex;">
+        <fieldset class="fieldBunch" style="flex-grow: 1; margin-top: 10px; padding: 0 10px 10px 10px; height: 450px; overflow: auto">
+          <legend style="font-size: 8pt">&nbsp;Powers granted by {{item.name}}&nbsp;{{#if system.canAddChannel}}<span class="addChannel addButton" data-type="add">+</span>{{/if}}</legend>
+          {{#each system.channels}}
+            {{#if this.blurb}}
+            <div style="margin: 10px 0 10px 0">
+              <div style="font-size: 1.2em; font-weight: bold"><span class="editChannel" data-type="edit" data-id="{{@key}}" style="cursor: pointer">{{{this.blurb}}}</span>&nbsp;&nbsp;
+                <i class="deleteChannel fas fa-trash fa-xs" style="color: grey; cursor: pointer" data-id="{{@key}}" title="Delete this Channel"></i></div>
+              <div>{{{this.description}}}</div>
+            </div>
+            {{/if}}
+          {{/each}}
+        </fieldset>
+      <div>
+    </div>
+  </div>
+</form>

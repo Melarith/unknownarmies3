@@ -1,0 +1,431 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <nav class='flexrow tabbed round' data-group='primary' style="width: 100%" id='char-tabs'>
+    <ul>
+      <li data-tab="stuff">&nbsp;Stuff&nbsp;</li>
+      <li data-tab="magick">&nbsp;Magick&nbsp;</li>
+      <li data-tab="trauma">&nbsp;Trauma&nbsp;</li>
+      <li data-tab="character" class="active">&nbsp;Profile&nbsp;</li>
+    </ul>
+  </nav>
+  
+    <div class="tab-content flexrow"
+      style="height: 100%; border: 4px solid #f1d592; border-radius: 4px; padding: 5px; background-color: #f1d592">
+    
+      <div class="character tab active" data-group="primary" data-tab="character">
+        <div style="height: 500px; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-content: stretch; align-items: flex-start;">
+          <div style="order: 0; flex: 1 1 auto; align-self: stretch;">
+            <div>
+              <div class="paperclip">
+                <img src="/systems/ua3/assets/ui/paperclip-cut.png" style="border: none">
+              </div>
+              <div class="td" style="padding: 2px; width: 160px">
+                <div class="characterPic"
+                  style="background-color: white; padding: 5px; border: 1px solid darkslategrey; width: 150px; height: 198px">
+                  <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"
+                    style="cursor: pointer; width: 144px; height: auto" />
+                </div>
+              </div>
+
+              <div class="td" style="padding-left: 10px; vertical-align: top">
+                <div style="font-family: JMH Typewriter Bold; font-size: 1.8em">
+                  <input name="name" type="text" value="{{actor.name}}" placeholder="Character name" />
+                </div>
+                <div style="margin-top: 5px; display: flex; flex-wrap: nowrap;">
+                  <label class="embossed" style="display: inline-block">&nbsp;Obsession&nbsp;</label>
+                  <input type="text" name="data.obsession.description" value="{{data.obsession.description}}" placeholder="Obsession"
+                    style="width: 500px; margin-top: 2px; font-size: 1.15em" />
+                </div>
+                <div style="margin-top: 8px; vertical-align: middle; display: flex; flex-wrap: nowrap;">
+                  <label class="embossed" style="display: inline-block">&nbsp;Rage&nbsp;</label>
+                  <input name="data.passion.rage.triggered" type="checkbox" {{checked data.passion.rage.triggered}} style="margin: 6px 0 0 -3px; width: 12px; height: 12px" />
+                  <input type="text" name="data.passion.rage.description" value="{{data.passion.rage.description}}"
+                    placeholder="Rage trigger" style="margin-top: 2px; font-size: 1.15em" />
+                </div>
+                <div style="margin-top: 8px; display: flex; flex-wrap: nowrap;">
+                  <label class="embossed" style="display: inline-block">&nbsp;Fear&nbsp;</label>
+                  <input name="data.passion.fear.triggered" type="checkbox" {{checked data.passion.fear.triggered}}
+                    style="margin: 6px 0 0 -3px; width: 12px; height: 12px" />
+                  <input type="text" name="data.passion.fear.description" value="{{data.passion.fear.description}}"
+                    placeholder="Fear stimulus" style="margin-top: 2px; font-size: 1.15em" />
+                </div>
+                <div style="margin-top: 8px; display: flex; flex-wrap: nowrap;">
+                  <label class="embossed" style="display: inline-block">&nbsp;Noble&nbsp;</label>
+                  <input name="data.passion.noble.triggered" type="checkbox" {{checked data.passion.noble.triggered}}
+                    style="margin: 6px 0 0 -3px; width: 12px; height: 12px" />
+                  <input type="text" name="data.passion.noble.description" value="{{data.passion.noble.description}}"
+                    placeholder="Noble impulse" style="margin-top: 2px; font-size: 1.15em" />
+                </div>
+              </div>
+            </div>
+
+            <div style="padding-top: 10px; height: 500px; display: flex; flex-flow: column">
+              <fieldset class="fieldBunch" style="flex: 1">
+                <legend>&nbsp;Identities&nbsp;
+                  {{#if data.canAddIdentity}}<span class="addIdentity">+</span>{{/if}}&nbsp;
+                </legend>
+                {{#each data.identities}}
+                <div class="identity" itemid="{{this.data._id}}" identityName="{{this.name}}"
+                  style="margin-top: 5px">
+                  <input type="checkbox" {{checked this.data.data.xp}} style="width: 12px; height: 12px" disabled readonly/>
+                  <span style="font-family: JMH Typewriter Bold; font-size: 1.15em;{{#if this.data.data.obsession}}color: #880808{{/if}}">
+                    <i class="dicecheck fas fa-dice-d20" data-type="identity" data-id="{{this.id}}" data-target="{{this.name}}" data-check="{{this.name}}" data-action="check"></i>
+                    {{this.name}}&nbsp;&nbsp;{{this.data.data.value}}
+                  </span>
+                </div>
+                <div style="margin: 0 0 20px 25px; font-size: 1.15em">
+                  <div>Of course I can {{this.data.data.ocic}}</div>
+
+                  <div class="tooltip break-after" style="margin-top: 5px">
+                    {{this.feature1Ref.name}}
+                    <div class="right">
+                      <div>{{{this.feature1Ref.descr}}}</div>
+                      <i></i>
+                    </div>
+                  </div>
+                  {{#if this.feature2Ref}}
+                  <div class="tooltip break-after" style="padding-top: 5px">
+                    {{this.feature2Ref.name}}
+                    <div class="right">
+                      <div>{{{this.feature2Ref.descr}}}</div>
+                      <i></i>
+                    </div>
+                  </div>
+                  {{/if}}
+                  {{#if this.feature3Ref}}
+                  <div class="tooltip break-after" style="margin-top: 5px">
+                    {{this.feature3Ref.name}}
+                    <div class="right">
+                      <div>{{{this.feature3Ref.descr}}}</div>
+                      <i></i>
+                    </div>
+                  </div>
+                  {{/if}}
+                </div>
+                {{/each}}
+              </fieldset>
+            </div>
+          </div>
+
+          <div style="margin-left: 15px; order: 0; flex: 0 1 auto; align-self: stretch;">
+            <fieldset class="fieldBunch">
+              <legend>&nbsp;Abilities&nbsp;</legend>
+            
+              <div class="table" style="font-size: 1.2em; border-collapse: separate; border-spacing: 2px 8px">
+                <div class="tr">
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="connect" data-check="connect" data-action="check"></i></div>
+                  <div class="td abilityLabel">Connect</div>
+                  <div class="td abilityValue">{{data.ability.connect.value}}</div>
+                </div>
+                <div class="tr">
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="dodge" data-check="dodge" data-action="check"></i></div>
+                  <div class="td abilityLabel">Dodge</div>
+                  <div class="td abilityValue">{{data.ability.dodge.value}}</div>
+                </div>
+                <div class="tr">
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="fitness" data-check="fitness" data-action="check"></i></div>
+                  <div class="td abilityLabel">Fitness</div>
+                  <div class="td abilityValue">{{data.ability.fitness.value}}</div>
+                </div>
+                <div class="tr">
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="knowledge" data-check="knowledge" data-action="check"></i></div>
+                  <div class="td abilityLabel">Knowledge</div>
+                  <div class="td abilityValue">{{data.ability.knowledge.value}}</div>
+                </div>
+                <div class="tr">
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="lie" data-check="lie" data-action="check"></i></div>
+                  <div class="td abilityLabel">Lie</div>
+                  <div class="td abilityValue">{{data.ability.lie.value}}</div>
+                </div>
+                <div class="tr">
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="notice" data-check="notice" data-action="check"></i></div>
+                  <div class="td abilityLabel">Notice</div>
+                  <div class="td abilityValue">{{data.ability.notice.value}}</div>
+                </div>
+                <div class="tr">
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="pursuit" data-check="pursuit" data-action="check"></i></div>
+                  <div class="td abilityLabel">Pursuit</div>
+                  <div class="td abilityValue">{{data.ability.pursuit.value}}</div>
+                </div>
+                <div class="tr">
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="secrecy" data-check="secrecy" data-action="check"></i></div>
+                  <div class="td abilityLabel">Secrecy</div>
+                  <div class="td abilityValue">{{data.ability.secrecy.value}}</div>
+                </div>
+                <div class="tr">
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="status" data-check="status" data-action="check"></i></div>
+                  <div class="td abilityLabel">Status</div>
+                  <div class="td abilityValue">{{data.ability.status.value}}</div>
+                </div>
+                <div class="tr">
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="struggle" data-check="struggle" data-action="check"></i></div>
+                  <div class="td abilityLabel">Struggle</div>
+                  <div class="td abilityValue">{{data.ability.struggle.value}}</div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+     </div>
+    
+      <div class="trauma tab" data-tab="trauma" data-group="primary">
+        <div>
+          <fieldset gauge="helplessness" class="fieldBunch" style="margin-top: 10px">
+            <legend class="fieldBunch">&nbsp;Helplessness&nbsp;</legend>
+            <div class="table" style="font-size: 1.2em; border-collapse: separate; border-spacing: 5px; vertical-align: middle">
+              <div class="tr">
+                <div class="td" style="font-weight: bold; padding-right: 5px">Hardened</div>
+                <div value="1" class="td stress hardened stressUnchecked">1</div>
+                <div value="2" class="td stress hardened stressUnchecked">2</div>
+                <div value="3" class="td stress hardened stressUnchecked">3</div>
+                <div value="4" class="td stress hardened stressUnchecked">4</div>
+                <div value="5" class="td stress hardened stressUnchecked">5</div>
+                <div value="6" class="td stress hardened stressUnchecked">6</div>
+                <div value="7" class="td stress hardened stressUnchecked">7</div>
+                <div value="8" class="td stress hardened stressUnchecked">8</div>
+                <div value="9" class="td stress hardened stressUnchecked">9</div>
+      
+                <div class="td" style="font-weight: bold; padding: 0 5px 0 15px">Failed</div>
+                <div value="1" class="td stress failed stressUnchecked"></div>
+                <div value="2" class="td stress failed stressUnchecked"></div>
+                <div value="3" class="td stress failed stressUnchecked"></div>
+                <div value="4" class="td stress failed stressUnchecked"></div>
+                <div value="5" class="td stress failed stressUnchecked"></div>
+      
+                <div class="td" style="padding-left: 20px; width: 140px">
+                  <i class="fas fa-caret-up" style="color: green"></i>&nbsp;
+                  <b>Fitness</b>&nbsp;&nbsp;{{data.ability.fitness.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 140px">
+                  <i class="fas fa-caret-down" style="color: red"></i>&nbsp;
+                  <b>Dodge</b>&nbsp;&nbsp;{{data.ability.dodge.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 140px">
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="helplessness" data-check="status" data-action="protect"></i>
+                  <b>Protect</b>&nbsp;&nbsp;{{data.ability.status.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 120px">
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="helplessness" data-check="connect" data-action="coerce"></i>
+                  <b>Coerce</b>&nbsp;&nbsp;{{data.ability.connect.value}}
+                </div>
+              </div>
+            </div>
+          </fieldset>
+      
+          <fieldset gauge="isolation" class="fieldBunch" style="margin-top: 10px">
+            <legend class="fieldBunch">&nbsp;Isolation&nbsp;</legend>
+            <div class="table" style="font-size: 1.2em; border-collapse: separate; border-spacing: 5px; vertical-align: middle">
+              <div class="tr">
+                <div class="td" style="font-weight: bold; padding-right: 5px">Hardened</div>
+                <div value="1" class="td stress hardened stressUnchecked">1</div>
+                <div value="2" class="td stress hardened stressUnchecked">2</div>
+                <div value="3" class="td stress hardened stressUnchecked">3</div>
+                <div value="4" class="td stress hardened stressUnchecked">4</div>
+                <div value="5" class="td stress hardened stressUnchecked">5</div>
+                <div value="6" class="td stress hardened stressUnchecked">6</div>
+                <div value="7" class="td stress hardened stressUnchecked">7</div>
+                <div value="8" class="td stress hardened stressUnchecked">8</div>
+                <div value="9" class="td stress hardened stressUnchecked">9</div>
+                
+                <div class="td" style="font-weight: bold; padding: 0 5px 0 15px">Failed</div>
+                <div value="1" class="td stress failed stressUnchecked"></div>
+                <div value="2" class="td stress failed stressUnchecked"></div>
+                <div value="3" class="td stress failed stressUnchecked"></div>
+                <div value="4" class="td stress failed stressUnchecked"></div>
+                <div value="5" class="td stress failed stressUnchecked"></div>
+      
+                <div class="td" style="padding-left: 20px; width: 140px">
+                  <i class="fas fa-caret-up" style="color: green"></i>&nbsp;
+                  <b>Status</b>&nbsp;&nbsp;{{data.ability.status.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 140px">
+                  <i class="fas fa-caret-down" style="color: red"></i>&nbsp;
+                  <b>Pursuit</b>&nbsp;&nbsp;{{data.ability.pursuit.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 140px">
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="isolation" data-check="connect" data-action="protect"></i>
+                  <b>Protect</b>&nbsp;&nbsp;{{data.ability.connect.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 120px">
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="isolation" data-check="status" data-action="coerce"></i>
+                  <b>Coerce</b>&nbsp;&nbsp;{{data.ability.status.value}}
+                </div>
+              </div>
+            </div>
+          </fieldset>
+      
+          <fieldset gauge="self" class="fieldBunch" style="margin-top: 10px">
+            <legend class="fieldBunch">&nbsp;Self&nbsp;</legend>
+            <div class="table" style="font-size: 1.2em; border-collapse: separate; border-spacing: 5px; vertical-align: middle">
+              <div class="tr">
+                <div class="td" style="font-weight: bold; padding-right: 5px">Hardened</div>
+                <div value="1" class="td stress hardened stressUnchecked">1</div>
+                <div value="2" class="td stress hardened stressUnchecked">2</div>
+                <div value="3" class="td stress hardened stressUnchecked">3</div>
+                <div value="4" class="td stress hardened stressUnchecked">4</div>
+                <div value="5" class="td stress hardened stressUnchecked">5</div>
+                <div value="6" class="td stress hardened stressUnchecked">6</div>
+                <div value="7" class="td stress hardened stressUnchecked">7</div>
+                <div value="8" class="td stress hardened stressUnchecked">8</div>
+                <div value="9" class="td stress hardened stressUnchecked">9</div>
+                
+                <div class="td" style="font-weight: bold; padding: 0 5px 0 15px">Failed</div>
+                <div value="1" class="td stress failed stressUnchecked"></div>
+                <div value="2" class="td stress failed stressUnchecked"></div>
+                <div value="3" class="td stress failed stressUnchecked"></div>
+                <div value="4" class="td stress failed stressUnchecked"></div>
+                <div value="5" class="td stress failed stressUnchecked"></div>
+      
+                <div class="td" style="padding-left: 20px; width: 140px">
+                  <i class="fas fa-caret-up" style="color: green"></i>&nbsp;
+                  <b>Knowledge</b>&nbsp;&nbsp;{{data.ability.knowledge.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 140px">
+                  <i class="fas fa-caret-down" style="color: red"></i>&nbsp;
+                  <b>Lie</b>&nbsp;&nbsp;{{data.ability.lie.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 140px">
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="self" data-check="notice" data-action="protect"></i>
+                  <b>Protect</b>&nbsp;&nbsp;{{data.ability.notice.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 120px">
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="self" data-check="knowledge" data-action="coerce"></i>
+                  <b>Coerce</b>&nbsp;&nbsp;{{data.ability.knowledge.value}}
+                </div>
+              </div>
+            </div>
+          </fieldset>
+      
+          <fieldset gauge="unnatural" class="fieldBunch" style="margin-top: 10px">
+            <legend class="fieldBunch">&nbsp;Unnatural&nbsp;</legend>
+            <div class="table" style="font-size: 1.2em; border-collapse: separate; border-spacing: 5px; vertical-align: middle">
+              <div class="tr">
+                <div class="td" style="font-weight: bold; padding-right: 5px">Hardened</div>
+                <div value="1" class="td stress hardened stressUnchecked">1</div>
+                <div value="2" class="td stress hardened stressUnchecked">2</div>
+                <div value="3" class="td stress hardened stressUnchecked">3</div>
+                <div value="4" class="td stress hardened stressUnchecked">4</div>
+                <div value="5" class="td stress hardened stressUnchecked">5</div>
+                <div value="6" class="td stress hardened stressUnchecked">6</div>
+                <div value="7" class="td stress hardened stressUnchecked">7</div>
+                <div value="8" class="td stress hardened stressUnchecked">8</div>
+                <div value="9" class="td stress hardened stressUnchecked">9</div>
+                
+                <div class="td" style="font-weight: bold; padding: 0 5px 0 15px">Failed</div>
+                <div value="1" class="td stress failed stressUnchecked"></div>
+                <div value="2" class="td stress failed stressUnchecked"></div>
+                <div value="3" class="td stress failed stressUnchecked"></div>
+                <div value="4" class="td stress failed stressUnchecked"></div>
+                <div value="5" class="td stress failed stressUnchecked"></div>
+      
+                <div class="td" style="padding-left: 20px; width: 140px">
+                  <i class="fas fa-caret-up" style="color: green"></i>&nbsp;
+                  <b>Notice</b>&nbsp;&nbsp;{{data.ability.notice.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 140px">
+                  <i class="fas fa-caret-down" style="color: red"></i>&nbsp;
+                  <b>Secrecy</b>&nbsp;&nbsp;{{data.ability.secrecy.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 140px">
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="unnatural" data-check="knowledge" data-action="protect"></i>
+                  <b>Protect</b>&nbsp;&nbsp;{{data.ability.knowledge.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 120px">
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="unnatural" data-check="secrecy" data-action="coerce"></i>
+                  <b>Coerce</b>&nbsp;&nbsp;{{data.ability.secrecy.value}}
+                </div>
+              </div>
+            </div>
+          </fieldset>
+      
+          <fieldset gauge="violence" class="fieldBunch" style="margin-top: 10px">
+            <legend class="fieldBunch">&nbsp;Violence&nbsp;</legend>
+            <div class="table" style="font-size: 1.2em; border-collapse: separate; border-spacing: 5px; vertical-align: middle">
+              <div class="tr">
+                <div class="td" style="font-weight: bold; padding-right: 5px">Hardened</div>
+                <div value="1" class="td stress hardened stressUnchecked">1</div>
+                <div value="2" class="td stress hardened stressUnchecked">2</div>
+                <div value="3" class="td stress hardened stressUnchecked">3</div>
+                <div value="4" class="td stress hardened stressUnchecked">4</div>
+                <div value="5" class="td stress hardened stressUnchecked">5</div>
+                <div value="6" class="td stress hardened stressUnchecked">6</div>
+                <div value="7" class="td stress hardened stressUnchecked">7</div>
+                <div value="8" class="td stress hardened stressUnchecked">8</div>
+                <div value="9" class="td stress hardened stressUnchecked">9</div>
+                
+                <div class="td" style="font-weight: bold; padding: 0 5px 0 15px">Failed</div>
+                <div value="1" class="td stress failed stressUnchecked"></div>
+                <div value="2" class="td stress failed stressUnchecked"></div>
+                <div value="3" class="td stress failed stressUnchecked"></div>
+                <div value="4" class="td stress failed stressUnchecked"></div>
+                <div value="5" class="td stress failed stressUnchecked"></div>
+      
+                <div class="td" style="padding-left: 20px; width: 140px">
+                  <i class="fas fa-caret-up" style="color: green"></i>&nbsp;
+                  <b>Connect</b>&nbsp;&nbsp;{{data.ability.connect.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 140px">
+                  <i class="fas fa-caret-down" style="color: red"></i>&nbsp;
+                  <b>Struggle</b>&nbsp;&nbsp;{{data.ability.struggle.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 140px">
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="violence" data-check="fitness" data-action="protect"></i>
+                  <b>Protect</b>&nbsp;&nbsp;{{data.ability.fitness.value}}
+                </div>
+      
+                <div class="td" style="padding: 0 5px 0 15px; width: 120px">
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="violence" data-check="struggle" data-action="coerce"></i>
+                  <b>Coerce</b>&nbsp;&nbsp;{{data.ability.struggle.value}}
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="flexrow" style="margin-top: 20px; align-items: stretch">
+          <div style="margin-right: 10px">
+            <fieldset class="fieldBunch">
+              <legend class="fieldBunch">&nbsp;Mental Issues&nbsp;</legend>
+              <div>Lots</div>
+            </fieldset>
+          </div>
+
+          <div style="margin-right: 10px">
+            <fieldset class="fieldBunch">
+              <legend class="fieldBunch">&nbsp;Injuries&nbsp;</legend>
+              <div>Many</div>
+            </fieldset>
+          </div>
+
+          <div style="width: 50px">
+            <fieldset class="fieldBunch">
+              <legend class="fieldBunch">&nbsp;Weapons&nbsp;</legend>
+              <div>Pointy sticks</div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    
+      <div class="flexrow magick tab" data-group="primary" data-tab="magick">
+        Magick!
+      </div>
+    
+      <div class="flexrow stuff tab" data-group="primary" data-tab="stuff">
+        Stuff...
+      </div>
+    </div>
+
+</form>

@@ -1,0 +1,73 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <div class="flexrow" style="height: 100%; padding: 5px; background-color: #f1d592"">
+    <fieldset style="border: 1.5px solid black; border-radius: 3px; background-color: whitesmoke">
+      <legend class="flexrow">
+        &nbsp;{{item.name}}&nbsp;
+      </legend>
+
+      <div style="font-size: 1.2em; vertical-align: middle">
+        <div class="table" style="border-collapse: separate; border-spacing: 0 5px; ">
+          <div class="tr">
+            <div class="td" style="font-weight: bold; padding-right: 5px">Identity</div>
+            <div class="td">
+              <input class="itemName" name="name" type="text" value="{{item.name}}" placeholder="Identity name"/>
+            </div>
+
+            <div class="td" style="font-weight: bold; padding: 0 5px 0 20px">Rank</div>
+            <div class="td">
+              <input name="data.value" type="number" value="{{data.value}}" min="1" max="99"
+                style="width: 25px; text-align: right"/>
+            </div>
+          </div>
+
+          <div class="tr">
+            <div class="td" style="font-weight: bold; padding-right: 5px">Type</div>
+            <div class="td">
+              <select name="data.type" class="identityType" style="font-size: 1em; font-family: Signika, sans-serif">
+                {{#select data.type}}
+                {{#each config.identityTypes}}
+                <option value="{{@key}}">{{this.name}}</option>
+                {{/each}}
+                {{/select}}
+              </select>
+            </div>
+
+            <div class="td" style="font-weight: bold; padding: 0 5px 0 20px">Obsession</div>
+            <div class="td" style="vertical-align: middle">
+              <input name="data.obsession" type="checkbox" {{checked data.obsession}}/>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px">
+          <div>I'm <span class="aoran">a</span> {{item.name}}, of course I can...</div>
+          <textarea name="data.ocic" style="font-size: 1em; font-family: Signika, sans-serif; border: none; background-color: transparent; resize: none; outline: none" placeholder="do all sorts of stuff">{{data.ocic}}</textarea>
+        </div>
+
+        <div style="margin-top: 10px">
+          <div style="font-weight: bold; border-bottom: 1px solid black">Features</div>
+          <div class="featuresList">
+            <div feature="0" style="margin-top: 5px">
+              <select class="feature" style="font-size: 1em; font-family: Signika, sans-serif">
+              </select>
+              <select class="featureOptions"  style="font-size: 1em; font-family: Signika, sans-serif"></select>
+              <div style="margin-left: 8px; font-style: italic; margin-top: 3px"></div>
+            </div>
+            <div feature="1" style="margin-top: 20px">
+              <select class="feature" style="font-size: 1em; font-family: Signika, sans-serif">
+              </select>
+              <select class="featureOptions" style="font-size: 1em; font-family: Signika, sans-serif"></select>
+              <div style="margin-left: 8px; font-style: italic; margin-top: 3px"></div>
+            </div>
+            <div feature="2" style="margin-top: 20px">
+              <select class="feature" style="font-size: 1em; font-family: Signika, sans-serif">
+              </select>
+              <select class="featureOptions" style="font-size: 1em; font-family: Signika, sans-serif"></select>
+              <div style="margin-left: 8px; font-style: italic; margin-top: 3px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</form>

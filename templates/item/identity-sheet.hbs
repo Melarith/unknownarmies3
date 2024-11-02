@@ -1,0 +1,72 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <div class="flexrow" style="height: 100%; padding: 5px; background-color: #f1d592">
+    <fieldset style="border: 1.5px solid black; border-radius: 3px; background-color: whitesmoke">
+      <legend class="flexrow">
+        &nbsp;{{item.name}}&nbsp;
+      </legend>
+
+      <div class="identity" style="font-size: 1.2em; vertical-align: middle">
+        <div class="table" style="border-collapse: separate; border-spacing: 0 5px; ">
+          <div class="tr">
+            <div class="td" style="font-weight: bold; padding-right: 5px">Identity</div>
+            <div class="td">
+              <input class="itemName" name="name" type="text" value="{{item.name}}" placeholder="Identity name"/>
+            </div>
+
+            <div class="td" style="font-weight: bold; padding: 0 5px 0 20px">Rank</div>
+            <div class="td">
+              <input name="system.value" type="number" value="{{system.value}}" maxlength="2" min="1" max="99"
+                style="width: 35px; text-align: center" oninput="(validity.valid)||(value='');"/>
+            </div>
+          </div>
+
+          <div class="tr">
+            <div class="td" style="font-weight: bold; padding-right: 5px">Type</div>
+            <div class="td">
+              <select name="system.type" class="identityType" style="font-size: 1em; font-family: Signika, sans-serif">
+                {{selectOptions config.identityTypes selected=system.type labelAttr="name" localize=true}}
+              </select>
+            </div>
+
+            <div class="td" style="font-weight: bold; padding: 0 5px 0 20px">Obsession</div>
+            <div class="td" style="vertical-align: middle">
+              <input name="system.obsession" type="checkbox" {{checked system.obsession}}/>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px">
+          <div>I'm <span class="aoran">a</span> {{item.name}}, of course I can...</div>
+          <textarea name="system.ocic" style="font-size: 1em; font-family: Signika, sans-serif; border: none; background-color: transparent; resize: none; outline: none" placeholder="do all sorts of stuff">{{system.ocic}}</textarea>
+        </div>
+
+        <div style="margin-top: 10px">
+          <div style="font-weight: bold; border-bottom: 1px solid black">Features</div>
+          <div class="featuresList" test="Yep">
+            <div feature="1" style="margin-top: 5px">
+              <select name="system.feature1" class="feature" style="font-size: 1em; font-family: Signika, sans-serif" {{#if system.feature1lock}}disabled="true"{{/if}}>
+                <option disabled selected value>-- Add a Feature --</option>
+                {{selectOptions system.featureOptionsSpecial selected=system.feature1 valueAttr="key" labelAttr="label" localize=true}}
+              </select>
+              <div style="margin-left: 10px; font-size: 0.9em; font-style: italic; margin-top: 2px">{{{system.feature1descr}}}</div>
+            </div>
+            <div feature="2" style="margin-top: 20px;{{#unless system.feature2active}}display: none;{{/unless}}">
+              <select name="system.feature2" class="feature" style="font-size: 1em; font-family: Signika, sans-serif" {{#if system.feature2lock}}disabled="true"{{/if}}>
+                <option disabled selected value>-- Add a Feature --</option>
+                {{selectOptions system.featureOptions selected=system.feature2 valueAttr="key" labelAttr="label" localize=true}}
+              </select>
+              <div style="margin-left: 10px; font-size: 0.9em; font-style: italic; margin-top: 2px">{{{system.feature2descr}}}</div>
+            </div>
+            <div feature="3" style="margin-top: 20px;{{#unless system.feature3active}}display: none;{{/unless}}">
+              <select name="system.feature3" class="feature" style="font-size: 1em; font-family: Signika, sans-serif">
+                <option disabled selected value>-- Add a Feature --</option>
+                {{selectOptions system.featureOptions selected=system.feature3 valueAttr="key" labelAttr="label" localize=true}}
+              </select>
+              <div style="margin-left: 10px; font-size: 0.9em; font-style: italic; margin-top: 2px">{{{system.feature3descr}}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</form>

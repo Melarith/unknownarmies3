@@ -1,0 +1,128 @@
+<form data-context="{{choices.context}}">
+  <div style="margin-top: 6px; text-align: center; {{#unless choices.ishunch}}display: none;{{/unless}}">Select the Hunch target</div>
+  
+  <div style="text-align: center; {{#if choices.ishunch}}display: none;{{/if}}">
+    <label style="margin-right: 6px">Name</label>
+    <input name="effectName" type="text" maxlength="30" style="text-align: left; width: 200px" value="{{choices.label}}">
+  </div>
+    
+  <div style="margin-top: 6px; text-align: center; {{#if choices.ishunch}}display: none;{{/if}}">Select the target, type and value of the Effect</div>
+
+  <div style="margin-top: 6px; text-align: center">
+    <fieldset style="text-align: left; padding: 5px">
+      <legend>Target</legend>
+      <div class="targets" style="column-count: 2">
+        <div>
+          <label style="display: flex; align-items: center">
+            <input type="checkbox" data-type="skill" name="effectAll" value="all" style="width: 15px; height: 15px; flex: none" checked>
+            <span>Everything</span>
+          </label>
+        </div>
+        {{#each choices.identity}}
+        <div style="-webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid;">
+          <label style="display: flex; align-items: center">
+            <input type="checkbox" name="effectIdentity" value="{{@key}}" style="width: 15px; height: 15px; flex: none">
+            <span>{{this.label}}</span>
+          </label>
+        </div>
+        {{/each}}
+
+        {{#each choices.ability}}
+        <div style="-webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid;">
+          <label style="display: flex; align-items: center">
+            <input type="checkbox" name="effectAbility" value="{{@key}}" style="width: 15px; height: 15px; flex: none">
+            <span>{{this.label}}</span>
+          </label>
+        </div>
+        {{/each}}
+      </div>
+    </fieldset>
+  </div>
+
+  <table align="center" style="all: revert; margin-top: 6px; {{#if choices.ishunch}}display: none;{{/if}}">
+    <tr>
+      <td style="width: 200px">
+        <label>
+          <input type="radio" name="effectType" value="+" {{#unless choices.ishunch}}checked{{/unless}}>&nbsp;Bonus
+        </label>
+      </td>
+      <td style="width: 200px">
+        <label>
+          <input type="radio" name="effectType" value="-">&nbsp;Penalty
+        </label>
+      </td>
+      <td style="width: 200px">
+        <label>
+          <input type="radio" name="effectType" value="d">&nbsp;Difficulty
+        </label>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="width: 200px">
+        <label>
+          <input type="radio" name="effectType" value=">">&nbsp;Upgrade
+        </label>
+      </td>
+      <td style="width: 200px">
+        <label>
+          <input type="radio" name="effectType" value="<">&nbsp;Downgrade
+        </label>
+      </td>
+      <td style="width: 200px">
+        <label>
+          <input type="radio" name="effectType" value="o">&nbsp;Override
+        </label>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="width: 200px">
+        <label>
+          <input type="radio" name="effectType" value="f">&nbsp;Flip-Flop
+        </label>
+      </td>
+      <td style="width: 200px">
+        <label>
+          <input type="radio" name="effectType" value="r">&nbsp;Reroll
+        </label>
+      </td>
+      <td style="width: 200px">
+        <label>
+          <input type="radio" name="effectType" value="h" {{#if choices.ishunch}}checked{{/if}}>&nbsp;Hunch
+        </label>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="width: 200px">
+        <label>
+          <input type="radio" name="effectType" value="c">&nbsp;Custom
+        </label>
+      </td>
+      <td style="width: 200px">
+      </td>
+      <td style="width: 200px">
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin: 10px 0 10px 0; text-align: center">
+    <label class="customInp" style="display: none">
+      <input name="effectCustom" type="text" style="margin-left: 10px; width: 350px">
+    </label>
+
+    <label class="valueInp">
+      Value&nbsp;
+      <input id="effectValue" name="effectValue" type="number" min="1" max="100" step="1" oninput="(validity.valid)||(value='')"
+        style="margin-left: 10px; width: 40px; text-align: center">
+    </label>
+    <span style="{{#unless choices.ishunch}}display: none;{{/unless}}">&nbsp;<i class="generateHunch fas fa-dice-d20" style="color: darkred; cursor: pointer"></i></span>
+  </div>
+
+  <div style="padding-bottom: 20px; text-align: center; width: 100%">
+    <label style="">
+      <input type="checkbox" name="pcToggle" value="1" style="width: 15px; height: 15px; margin: 0; vertical-align: top">&nbsp;&nbsp;Allow PCs to toggle
+    </label>
+  </div>
+</form>
