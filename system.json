@@ -2,7 +2,7 @@
   "id": "ua3",
   "title": "Unknown Armies v3",
   "description": "A system for playing Unknown Armies v3 based on Fairlyhyperman's character sheet: https://www.twincitiesrpg.com/files/Foundry/ua3/ua3blurb.html",
-  "version": "1.1.1",
+  "version": "0.2.3",
   "compatibility": {
     "minimum": "11.315",
     "verified": "12.0"
