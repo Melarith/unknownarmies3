@@ -1,7 +1,7 @@
 <form class="{{cssClass}}" autocomplete="off">
-  <nav class='flexrow tabbed round' data-group='primary' style="width: 100%; background-color: rgba(240, 240, 240, 0.1);" id='char-tabs'>
+  <nav class='flexrow tabbed round' data-group='primary' style="width: 100%" id='char-tabs'>
     <ul>
-      <li data-tab="notes">&nbsp;Notes&nbsp;</li>
+      <li data-tab="stuff">&nbsp;Stuff&nbsp;</li>
       <li data-tab="magick">&nbsp;Magick&nbsp;</li>
       <li data-tab="trauma">&nbsp;Trauma&nbsp;</li>
       <li data-tab="character" class="active">&nbsp;Profile&nbsp;</li>
@@ -31,39 +31,29 @@
                   <input name="name" type="text" value="{{actor.name}}" placeholder="Character name" />
                 </div>
                 <div style="margin-top: 5px; display: flex; flex-wrap: nowrap;">
-                  <label class="embossed" style="font-size: 9pt; display: inline-block" title="The aspect of existence that you are obsessed with.{{#if system.obsessionIdentity}} Linked to {{system.obsessionIdentity.name}}.{{/if}}">
-                    &nbsp;Obsession&nbsp;</label>
-                  <input type="text" name="system.obsession.description" value="{{system.obsession.description}}" placeholder="Obsession"
+                  <label class="embossed" style="display: inline-block">&nbsp;Obsession&nbsp;</label>
+                  <input type="text" name="data.obsession.description" value="{{data.obsession.description}}" placeholder="Obsession"
                     style="width: 500px; margin-top: 2px; font-size: 1.15em" />
                 </div>
                 <div style="margin-top: 8px; vertical-align: middle; display: flex; flex-wrap: nowrap;">
-                  <label class="embossed passion" data-id="rage"
-                    style="font-size: 9pt; display: inline-block; cursor: pointer; {{#if system.passion.rage.triggered}}color: #bb0a1e;{{/if}}"
-                    title="The thing that really pisses you off.">
-                    &nbsp;Rage&nbsp;</label>
-                  <input type="text" name="system.passion.rage.description" value="{{system.passion.rage.description}}"
+                  <label class="embossed" style="display: inline-block">&nbsp;Rage&nbsp;</label>
+                  <input name="data.passion.rage.triggered" type="checkbox" {{checked data.passion.rage.triggered}} style="margin: 6px 0 0 -3px; width: 12px; height: 12px" />
+                  <input type="text" name="data.passion.rage.description" value="{{data.passion.rage.description}}"
                     placeholder="Rage trigger" style="margin-top: 2px; font-size: 1.15em" />
                 </div>
                 <div style="margin-top: 8px; display: flex; flex-wrap: nowrap;">
-                  <label class="embossed passion" data-id="fear"
-                    style="font-size: 9pt; display: inline-block; cursor: pointer; {{#if system.passion.fear.triggered}}color: #ffd300; background-color: black;{{/if}}"
-                    title="That thing that you're absolutely terrified of.">
-                    &nbsp;Fear&nbsp;</label>
-                  <input type="text" name="system.passion.fear.description" value="{{system.passion.fear.description}}"
+                  <label class="embossed" style="display: inline-block">&nbsp;Fear&nbsp;</label>
+                  <input name="data.passion.fear.triggered" type="checkbox" {{checked data.passion.fear.triggered}}
+                    style="margin: 6px 0 0 -3px; width: 12px; height: 12px" />
+                  <input type="text" name="data.passion.fear.description" value="{{data.passion.fear.description}}"
                     placeholder="Fear stimulus" style="margin-top: 2px; font-size: 1.15em" />
                 </div>
                 <div style="margin-top: 8px; display: flex; flex-wrap: nowrap;">
-                  <label class="embossed passion" data-id="noble"
-                    style="font-size: 9pt; display: inline-block; cursor: pointer; {{#if system.passion.noble.triggered}}color: #4169e1;{{/if}}"
-                    title="The thing that brings out the best in you.">
-                    &nbsp;Noble&nbsp;</label>
-                  <input type="text" name="system.passion.noble.description" value="{{system.passion.noble.description}}"
+                  <label class="embossed" style="display: inline-block">&nbsp;Noble&nbsp;</label>
+                  <input name="data.passion.noble.triggered" type="checkbox" {{checked data.passion.noble.triggered}}
+                    style="margin: 6px 0 0 -3px; width: 12px; height: 12px" />
+                  <input type="text" name="data.passion.noble.description" value="{{data.passion.noble.description}}"
                     placeholder="Noble impulse" style="margin-top: 2px; font-size: 1.15em" />
-                </div>
-                <div style="margin-top: 8px; display: flex; flex-wrap: nowrap;{{#unless @root.system.isGM}}display:none;{{/unless}}">
-                  <label for="isNameKnown" style="display: flex; align-items: center; padding: 2px; cursor: pointer;">
-                    <input class="actorFlag" id="isNameKnown" type="checkbox" value="1" style="margin: 0; padding: 0; flex: none;" {{#if system.flags.isNameKnown}}checked{{/if}}><span style="margin-left: 10px; font-size: 1.1em">Is Name Known?</span>
-                  </label>
                 </div>
               </div>
             </div>
@@ -71,196 +61,108 @@
             <div style="padding-top: 10px; height: 500px; display: flex; flex-flow: column">
               <fieldset class="fieldBunch" style="flex: 1">
                 <legend>&nbsp;Identities&nbsp;
-                  {{#if @root.system.isGM}}<span class="addIdentity addButton">+</span>{{/if}}
-                  {{#if system.hasAdvancement}}<span class="doAdvance" style="color:black; background-color: lightgreen; cursor: pointer" title="Roll for advancement">XP</span>{{/if}}
+                  {{#if data.canAddIdentity}}<span class="addIdentity">+</span>{{/if}}&nbsp;
                 </legend>
-                <div class="table">
-                  {{#each system.identities}}
-                    <div class="tr">
-                      <div class="td" style="padding-right: 10px">
-                        <i class="dicecheck fas fa-dice-d20" style="margin-right: -5px"
-                          data-type="identity"
-                          data-id="{{this.id}}"
-                          data-target="{{this.name}}"
-                          data-check="{{this.name}}"
-                          data-action="check"
-                          data-actionDescr="Checks"
-                        ></i>
-                        <div>
-                          <input class="xp" data-id="{{this.id}}" type="checkbox" {{checked this.system.xp}} style="margin: 5px 0 0 0; width: 12px; height: 12px" />
-                        </div>
-                      </div>
-                      <div class="td">
-                        <div class="identity" itemid="{{this._id}}" identityName="{{this.name}}"
-                          style="vertical-align: top">
-                          <span
-                            style="font-family: JMH Typewriter Bold; font-size: 1.15em;{{#if this.system.obsession}}color: #880808{{/if}}">
-                            <span style="display: inline-block; width: 250px">{{this.name}}</span>{{fixrange this.system.value}}
-                          </span>
-                        </div>
-                        <div style="margin-bottom: 15px; font-size: 1.15em">
-                          <div>Of course I can {{this.system.ocic}}</div>
-                          <div style="margin-top: 3px; cursor: help; font-style: italic">
-                            <span title="{{{this.feature1Ref.descr}}}">{{this.feature1Ref.name}}</span>{{#if this.feature2Ref}}<span title="{{{this.feature2Ref.descr}}}">; {{this.feature2Ref.name}}</span>{{/if}}{{#if this.feature3Ref}}<span title="{{{this.feature3Ref.descr}}}">; {{this.feature3Ref.name}}</span>{{/if}}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  {{/each}}
+                {{#each data.identities}}
+                <div class="identity" itemid="{{this.data._id}}" identityName="{{this.name}}"
+                  style="margin-top: 5px">
+                  <input type="checkbox" {{checked this.data.data.xp}} style="width: 12px; height: 12px" disabled readonly/>
+                  <span style="font-family: JMH Typewriter Bold; font-size: 1.15em;{{#if this.data.data.obsession}}color: #880808{{/if}}">
+                    <i class="dicecheck fas fa-dice-d20" data-type="identity" data-id="{{this.id}}" data-target="{{this.name}}" data-check="{{this.name}}" data-action="check"></i>
+                    {{this.name}}&nbsp;&nbsp;{{this.data.data.value}}
+                  </span>
                 </div>
+                <div style="margin: 0 0 20px 25px; font-size: 1.15em">
+                  <div>Of course I can {{this.data.data.ocic}}</div>
+
+                  <div class="tooltip break-after" style="margin-top: 5px">
+                    {{this.feature1Ref.name}}
+                    <div class="right">
+                      <div>{{{this.feature1Ref.descr}}}</div>
+                      <i></i>
+                    </div>
+                  </div>
+                  {{#if this.feature2Ref}}
+                  <div class="tooltip break-after" style="padding-top: 5px">
+                    {{this.feature2Ref.name}}
+                    <div class="right">
+                      <div>{{{this.feature2Ref.descr}}}</div>
+                      <i></i>
+                    </div>
+                  </div>
+                  {{/if}}
+                  {{#if this.feature3Ref}}
+                  <div class="tooltip break-after" style="margin-top: 5px">
+                    {{this.feature3Ref.name}}
+                    <div class="right">
+                      <div>{{{this.feature3Ref.descr}}}</div>
+                      <i></i>
+                    </div>
+                  </div>
+                  {{/if}}
+                </div>
+                {{/each}}
               </fieldset>
             </div>
           </div>
 
-          <div style="margin-left: 8px; order: 0; flex: 0 1 auto; align-self: stretch;">
+          <div style="margin-left: 15px; order: 0; flex: 0 1 auto; align-self: stretch;">
             <fieldset class="fieldBunch">
               <legend>&nbsp;Abilities&nbsp;</legend>
             
-              <div class="table" style="width: 100%; margin: -10px 0 -5px 0; font-size: 1.2em; border-collapse: separate; border-spacing: 2px 8px">
+              <div class="table" style="font-size: 1.2em; border-collapse: separate; border-spacing: 2px 8px">
                 <div class="tr">
-                  <div class="td"><i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="connect"
-                    data-check="connect"
-                    data-action="check"
-                    data-actionDescr="Checks"
-                  ></i></div>
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="connect" data-check="connect" data-action="check"></i></div>
                   <div class="td abilityLabel">Connect</div>
-                  <div class="td abilityValue">{{fixrange system.ability.connect.value}}</div>
+                  <div class="td abilityValue">{{data.ability.connect.value}}</div>
                 </div>
                 <div class="tr">
-                  <div class="td"><i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="dodge"
-                    data-check="dodge"
-                    data-action="check"
-                    data-actionDescr="Checks"
-                  ></i></div>
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="dodge" data-check="dodge" data-action="check"></i></div>
                   <div class="td abilityLabel">Dodge</div>
-                  <div class="td abilityValue">{{fixrange system.ability.dodge.value}}</div>
+                  <div class="td abilityValue">{{data.ability.dodge.value}}</div>
                 </div>
                 <div class="tr">
-                  <div class="td"><i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="fitness"
-                    data-check="fitness"
-                    data-action="check"
-                    data-actionDescr="Checks"
-                  ></i></div>
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="fitness" data-check="fitness" data-action="check"></i></div>
                   <div class="td abilityLabel">Fitness</div>
-                  <div class="td abilityValue">{{fixrange system.ability.fitness.value}}</div>
+                  <div class="td abilityValue">{{data.ability.fitness.value}}</div>
                 </div>
                 <div class="tr">
-                  <div class="td"><i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="knowledge"
-                    data-check="knowledge"
-                    data-action="check"
-                    data-actionDescr="Checks"
-                  ></i></div>
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="knowledge" data-check="knowledge" data-action="check"></i></div>
                   <div class="td abilityLabel">Knowledge</div>
-                  <div class="td abilityValue">{{fixrange system.ability.knowledge.value}}</div>
+                  <div class="td abilityValue">{{data.ability.knowledge.value}}</div>
                 </div>
                 <div class="tr">
-                  <div class="td"><i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="lie"
-                    data-check="lie"
-                    data-action="check"
-                    data-actionDescr="Checks"
-                  ></i></div>
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="lie" data-check="lie" data-action="check"></i></div>
                   <div class="td abilityLabel">Lie</div>
-                  <div class="td abilityValue">{{fixrange system.ability.lie.value}}</div>
+                  <div class="td abilityValue">{{data.ability.lie.value}}</div>
                 </div>
                 <div class="tr">
-                  <div class="td"><i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="notice"
-                    data-check="notice"
-                    data-action="check"
-                    data-actionDescr="Checks"
-                  ></i></div>
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="notice" data-check="notice" data-action="check"></i></div>
                   <div class="td abilityLabel">Notice</div>
-                  <div class="td abilityValue">{{fixrange system.ability.notice.value}}</div>
+                  <div class="td abilityValue">{{data.ability.notice.value}}</div>
                 </div>
                 <div class="tr">
-                  <div class="td"><i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="pursuit"
-                    data-check="pursuit"
-                    data-action="check"
-                    data-actionDescr="Checks"
-                  ></i></div>
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="pursuit" data-check="pursuit" data-action="check"></i></div>
                   <div class="td abilityLabel">Pursuit</div>
-                  <div class="td abilityValue">{{fixrange system.ability.pursuit.value}}</div>
+                  <div class="td abilityValue">{{data.ability.pursuit.value}}</div>
                 </div>
                 <div class="tr">
-                  <div class="td"><i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="secrecy"
-                    data-check="secrecy"
-                    data-action="check"
-                    data-actionDescr="Checks"
-                  ></i></div>
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="secrecy" data-check="secrecy" data-action="check"></i></div>
                   <div class="td abilityLabel">Secrecy</div>
-                  <div class="td abilityValue">{{fixrange system.ability.secrecy.value}}</div>
+                  <div class="td abilityValue">{{data.ability.secrecy.value}}</div>
                 </div>
                 <div class="tr">
-                  <div class="td"><i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="status"
-                    data-check="status"
-                    data-action="check"
-                    data-actionDescr="Checks"
-                  ></i></div>
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="status" data-check="status" data-action="check"></i></div>
                   <div class="td abilityLabel">Status</div>
-                  <div class="td abilityValue">{{fixrange system.ability.status.value}}</div>
+                  <div class="td abilityValue">{{data.ability.status.value}}</div>
                 </div>
                 <div class="tr">
-                  <div class="td"><i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="struggle"
-                    data-check="struggle"
-                    data-action="check"
-                    data-actionDescr="Checks"
-                  ></i></div>
+                  <div class="td"><i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="struggle" data-check="struggle" data-action="check"></i></div>
                   <div class="td abilityLabel">Struggle</div>
-                  <div class="td abilityValue">{{fixrange system.ability.struggle.value}}</div>
+                  <div class="td abilityValue">{{data.ability.struggle.value}}</div>
                 </div>
               </div>
             </fieldset>
-
-            <fieldset class="fieldBunch" style="height: 120px; margin-top: 10px">
-              <legend>&nbsp;Hunches&nbsp;{{#if @root.system.isGM}}<span class="addHunch addButton">+</span>{{/if}}</legend>
-              <div class="table" style="width: 100%">
-                {{#each system.hunches}}
-                <div class="tr">
-                  {{#if @root.system.isGM}}
-                  <div class="td deleteHunch" style="width: 20px; color: grey; cursor: pointer" data-id="{{this.id}}"
-                    title="Delete this Hunch"><i class="fas fa-trash"></i></div>
-                  {{/if}}
-                  <div class="td toggleEffect {{#if this.disabled}}disabled{{/if}}" style="text-align: left" data-id="{{this.id}}" title="{{this.flags.ua3.hint}}">{{this.name}}</div>
-                  <div class="td toggleEffect {{#if this.disabled}}disabled{{/if}}" style="text-align: right">{{this.flags.ua3.hunch}}</div>
-                </div>
-                {{/each}}
-              </div>
-            </fieldset>
-
-            <fieldset class="fieldBunch" style="height: 243px; margin-top: 10px">
-              <legend><span class="specialEffect">&nbsp;Effects&nbsp;</span>{{#if @root.system.isGM}}<span class="addEffect addButton">+</span>{{/if}}</legend>
-              <div class="table" style="width: 100%">
-                {{#each system.effects}}
-                <div class="tr">
-                  {{#if @root.system.isGM}}
-                  <div class="td deleteEffect" style="width: 20px; padding-bottom: 5px; color: grey; cursor: pointer" data-id="{{this.id}}"
-                    title="Delete this Effect"><i class="fas fa-trash"></i></div>
-                  {{/if}}
-                  <div class="td toggleEffect {{#if this.disabled}}disabled{{/if}}" style="text-align: left; padding-bottom: 5px" data-id="{{this.id}}" title="{{this.flags.ua3.hint}}">{{this.name}}</div>
-                </div>
-                {{/each}}
-              </div>
-            </fieldset>
-
           </div>
         </div>
      </div>
@@ -291,34 +193,22 @@
       
                 <div class="td" style="padding-left: 20px; width: 140px">
                   <i class="fas fa-caret-up" style="color: green"></i>&nbsp;
-                  <b>Fitness</b>&nbsp;&nbsp;{{fixrange system.ability.fitness.value}}
+                  <b>Fitness</b>&nbsp;&nbsp;{{data.ability.fitness.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 140px">
                   <i class="fas fa-caret-down" style="color: red"></i>&nbsp;
-                  <b>Dodge</b>&nbsp;&nbsp;{{fixrange system.ability.dodge.value}}
+                  <b>Dodge</b>&nbsp;&nbsp;{{data.ability.dodge.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 140px">
-                  <i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="helplessness"
-                    data-check="status"
-                    data-action="protect"
-                    data-actionDescr="Protects"
-                  ></i>
-                  <b>Protect</b>&nbsp;&nbsp;{{fixrange system.ability.status.value}}
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="helplessness" data-check="status" data-action="protect"></i>
+                  <b>Protect</b>&nbsp;&nbsp;{{data.ability.status.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 120px">
-                  <i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="helplessness"
-                    data-check="connect"
-                    data-action="coerce"
-                    data-actionDescr="Coerces"
-                  ></i>
-                  <b>Coerce</b>&nbsp;&nbsp;{{fixrange system.ability.connect.value}}
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="helplessness" data-check="connect" data-action="coerce"></i>
+                  <b>Coerce</b>&nbsp;&nbsp;{{data.ability.connect.value}}
                 </div>
               </div>
             </div>
@@ -348,34 +238,22 @@
       
                 <div class="td" style="padding-left: 20px; width: 140px">
                   <i class="fas fa-caret-up" style="color: green"></i>&nbsp;
-                  <b>Status</b>&nbsp;&nbsp;{{fixrange system.ability.status.value}}
+                  <b>Status</b>&nbsp;&nbsp;{{data.ability.status.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 140px">
                   <i class="fas fa-caret-down" style="color: red"></i>&nbsp;
-                  <b>Pursuit</b>&nbsp;&nbsp;{{fixrange system.ability.pursuit.value}}
+                  <b>Pursuit</b>&nbsp;&nbsp;{{data.ability.pursuit.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 140px">
-                  <i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="isolation"
-                    data-check="connect"
-                    data-action="protect"
-                    data-actionDescr="Protects"
-                  ></i>
-                  <b>Protect</b>&nbsp;&nbsp;{{fixrange system.ability.connect.value}}
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="isolation" data-check="connect" data-action="protect"></i>
+                  <b>Protect</b>&nbsp;&nbsp;{{data.ability.connect.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 120px">
-                  <i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="isolation"
-                    data-check="status"
-                    data-action="coerce"
-                    data-actionDescr="Coerces"
-                  ></i>
-                  <b>Coerce</b>&nbsp;&nbsp;{{fixrange system.ability.status.value}}
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="isolation" data-check="status" data-action="coerce"></i>
+                  <b>Coerce</b>&nbsp;&nbsp;{{data.ability.status.value}}
                 </div>
               </div>
             </div>
@@ -405,34 +283,22 @@
       
                 <div class="td" style="padding-left: 20px; width: 140px">
                   <i class="fas fa-caret-up" style="color: green"></i>&nbsp;
-                  <b>Knowledge</b>&nbsp;&nbsp;{{fixrange system.ability.knowledge.value}}
+                  <b>Knowledge</b>&nbsp;&nbsp;{{data.ability.knowledge.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 140px">
                   <i class="fas fa-caret-down" style="color: red"></i>&nbsp;
-                  <b>Lie</b>&nbsp;&nbsp;{{fixrange system.ability.lie.value}}
+                  <b>Lie</b>&nbsp;&nbsp;{{data.ability.lie.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 140px">
-                  <i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="self"
-                    data-check="notice"
-                    data-action="protect"
-                    data-actionDescr="Protects"
-                  ></i>
-                  <b>Protect</b>&nbsp;&nbsp;{{fixrange system.ability.notice.value}}
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="self" data-check="notice" data-action="protect"></i>
+                  <b>Protect</b>&nbsp;&nbsp;{{data.ability.notice.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 120px">
-                  <i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="self"
-                    data-check="knowledge"
-                    data-action="coerce"
-                    data-actionDescr="Coerces"
-                  ></i>
-                  <b>Coerce</b>&nbsp;&nbsp;{{fixrange system.ability.knowledge.value}}
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="self" data-check="knowledge" data-action="coerce"></i>
+                  <b>Coerce</b>&nbsp;&nbsp;{{data.ability.knowledge.value}}
                 </div>
               </div>
             </div>
@@ -462,34 +328,22 @@
       
                 <div class="td" style="padding-left: 20px; width: 140px">
                   <i class="fas fa-caret-up" style="color: green"></i>&nbsp;
-                  <b>Notice</b>&nbsp;&nbsp;{{fixrange system.ability.notice.value}}
+                  <b>Notice</b>&nbsp;&nbsp;{{data.ability.notice.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 140px">
                   <i class="fas fa-caret-down" style="color: red"></i>&nbsp;
-                  <b>Secrecy</b>&nbsp;&nbsp;{{fixrange system.ability.secrecy.value}}
+                  <b>Secrecy</b>&nbsp;&nbsp;{{data.ability.secrecy.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 140px">
-                  <i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="unnatural"
-                    data-check="knowledge"
-                    data-action="protect"
-                    data-actionDescr="Protects"
-                  ></i>
-                  <b>Protect</b>&nbsp;&nbsp;{{fixrange system.ability.knowledge.value}}
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="unnatural" data-check="knowledge" data-action="protect"></i>
+                  <b>Protect</b>&nbsp;&nbsp;{{data.ability.knowledge.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 120px">
-                  <i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="unnatural"
-                    data-check="secrecy"
-                    data-action="coerce"
-                    data-actionDescr="Coerces"
-                  ></i>
-                  <b>Coerce</b>&nbsp;&nbsp;{{fixrange system.ability.secrecy.value}}
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="unnatural" data-check="secrecy" data-action="coerce"></i>
+                  <b>Coerce</b>&nbsp;&nbsp;{{data.ability.secrecy.value}}
                 </div>
               </div>
             </div>
@@ -519,451 +373,58 @@
       
                 <div class="td" style="padding-left: 20px; width: 140px">
                   <i class="fas fa-caret-up" style="color: green"></i>&nbsp;
-                  <b>Connect</b>&nbsp;&nbsp;{{fixrange system.ability.connect.value}}
+                  <b>Connect</b>&nbsp;&nbsp;{{data.ability.connect.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 140px">
                   <i class="fas fa-caret-down" style="color: red"></i>&nbsp;
-                  <b>Struggle</b>&nbsp;&nbsp;{{fixrange system.ability.struggle.value}}
+                  <b>Struggle</b>&nbsp;&nbsp;{{data.ability.struggle.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 140px">
-                  <i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="violence"
-                    data-check="fitness"
-                    data-action="protect"
-                    data-actionDescr="Protects"
-                  ></i>
-                  <b>Protect</b>&nbsp;&nbsp;{{fixrange system.ability.fitness.value}}
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="violence" data-check="fitness" data-action="protect"></i>
+                  <b>Protect</b>&nbsp;&nbsp;{{data.ability.fitness.value}}
                 </div>
       
                 <div class="td" style="padding: 0 5px 0 15px; width: 120px">
-                  <i class="dicecheck fas fa-dice-d20"
-                    data-type="ability"
-                    data-target="violence"
-                    data-check="struggle"
-                    data-action="coerce"
-                    data-actionDescr="Coerces"
-                  ></i>
-                  <b>Coerce</b>&nbsp;&nbsp;{{fixrange system.ability.struggle.value}}
+                  <i class="dicecheck fas fa-dice-d20" data-type="ability" data-target="violence" data-check="struggle" data-action="coerce"></i>
+                  <b>Coerce</b>&nbsp;&nbsp;{{data.ability.struggle.value}}
                 </div>
               </div>
             </div>
           </fieldset>
         </div>
 
-        <div style="display: flex; align-items: stretch; flex-direction: row; flex-wrap: nowrap; align-content: stretch; gap: 0; margin-top: 10px">
-          <div style="flex-grow: 0; height: 275px; width: 280px; margin-right: 10px">
-            <fieldset class="fieldBunch" style="height: 100%">
-              <legend class="fieldBunch">&nbsp;Relationships&nbsp;</legend>
-              <div style="height: 100%">
-                <div class="table"
-                  style="width: 100%; margin: -10px 0 -5px 0; font-size: 1.2em; border-collapse: separate; border-spacing: 2px 2px">
-                  {{#each system.relationship}}
-                  <div class="tr">
-                    <div class="td">
-                      <div>
-                        <i class="dicecheck fas fa-dice-d20" data-type="relationship" data-target="{{@key}}" data-check="{{@key}}"
-                          data-action="check" data-actionDescr="Leverages their relationship with {{this.description}}"></i>
-                        <b>{{this.label}}</b>
-                      </div>
-                      <div style="margin-left: 18px">
-                        <input type="text" name="system.relationship.{{@key}}.description" value="{{this.description}}"
-                          style="font-size: 0.9em" />
-                      </div>
-                    </div>
-                    <div class="td abilityValue">
-                      <input name="system.relationship.{{@key}}.value" type="number" min="0" max="99" step="1" value="{{fixrange this.value}}"
-                        style="width: 30px; text-align: right" oninput="(validity.valid)||(value='')">
-                    </div>
-                  </div>
-                  {{/each}}
-                </div>
-              </div>
-            </fieldset>
-          </div>
-
-          <div style="flex-grow: 0; height: 275px; width: 250px; margin-right: 10px">
-            <fieldset class="fieldBunch" style="height: 100%">
+        <div class="flexrow" style="margin-top: 20px; align-items: stretch">
+          <div style="margin-right: 10px">
+            <fieldset class="fieldBunch">
               <legend class="fieldBunch">&nbsp;Mental Issues&nbsp;</legend>
-              <div style="height: 100%">
-                <textarea name="system.mentalissues" style="height: 100%; border: none; resize: none">{{system.mentalissues}}</textarea>
-              </div>
+              <div>Lots</div>
             </fieldset>
           </div>
 
-          <div style="flex-grow: 1; height: 275px; width: 160px; margin-right: 10px">
-            <fieldset class="fieldBunch" style="height: 100%">
+          <div style="margin-right: 10px">
+            <fieldset class="fieldBunch">
               <legend class="fieldBunch">&nbsp;Injuries&nbsp;</legend>
-              {{#if @root.system.isGM}}
-              <div class="woundPoints" style="font-size: 1.2em; text-align: center; padding-bottom: 7px; margin-bottom: 10px; border-bottom: 1px solid darkgrey">
-                <span><b>Wound Points</b></span>
-                <span>
-                  <input name="system.wounds.current" type="number" min="0" max="200" step="1" value="{{system.wounds.current}}" 
-                    style="width: 30px; text-align: center"
-                    oninput="(validity.valid)||(value='')">
-                </span>
-                <span>of</span>
-                <span>
-                  <input name="system.wounds.maximum" type="number" min="0" max="200" step="1" value="{{system.wounds.maximum}}"
-                    style="width: 35px; text-align: center"
-                    oninput="(validity.valid)||(value='')">
-                </span>
-              </div>
-              {{/if}}
-              <div style="height: 100%">
-                <textarea name="system.wounds.injuries" style="height: 170px; border: none; resize: none">{{system.wounds.injuries}}</textarea>
-              </div>
+              <div>Many</div>
             </fieldset>
           </div>
 
-          <div style="flex-grow: 0; width: 250px">
-            <fieldset class="setInitiative fieldBunch" style="cursor: pointer; {{#unless system.initiative.fixed}}cursor: pointer; {{/unless}}height: 60px">
-              <legend class="fieldBunch">&nbsp;Initiative&nbsp;</legend>
-              <div style="padding-bottom: 5px; width: 100%">{{system.initiative.label}}</div>
-            </fieldset>
-
-            <fieldset class="fieldBunch" style="margin-top: 10px; height: 205px">
+          <div style="width: 50px">
+            <fieldset class="fieldBunch">
               <legend class="fieldBunch">&nbsp;Weapons&nbsp;</legend>
-              <div class="table"
-                style="width: 100%">
-                <div class="tr">
-                  {{#if @root.system.isGM}}
-                  <div class="td" style="width: 20px"></div>
-                  {{/if}}
-                  <div class="td" style="width: 20px"><i class="dicecheck fas fa-dice-d20"
-                      data-id="unarmed"
-                      data-type="ability"
-                      data-target="struggle"
-                      data-check="struggle"
-                      data-action="check"
-                      data-actionDescr="makes an unarmed attack with"
-                      data-weapon="struggle"
-                      data-damage="sum"
-                      data-damageModifier="0"
-                      data-damageMax="20"
-                      data-damageMissAuto="0"
-                      data-damageType="crush"
-                      ></i></div>
-                  <div class="td" style="font-size: 1.1em; text-align: left">Unarmed</div>
-                </div>
-                {{#each system.weapons}}
-                <div class="tr">
-                  {{#if @root.system.isGM}}
-                  <div class="td deleteWeapon" style="padding-top: 10px; font-size: 0.9em; width: 20px; color: grey; cursor: pointer" data-id="{{this.id}}"
-                    title="Remove this weapon"><i class="fas fa-trash"></i></div>
-                  {{/if}}
-                  <div class="td" style="padding-top: 10px; width: 20px"><i class="dicecheck fas fa-dice-d20"
-                      data-id="{{this.id}}"
-                      data-type="ability"
-                      data-target="struggle"
-                      data-check="struggle"
-                      data-action="check"
-                      data-actionDescr="{{this.system.actionDescr}}, using"
-                      data-weapon="{{this.system.attackWith}}"
-                      data-damage="{{this.system.damageType}}"
-                      data-damageModifier="{{this.system.damageModifier}}"
-                      data-damageMax="{{this.system.maxDamage}}"
-                      data-damageMissAuto="{{this.system.missAutoDamage}}"
-                      data-woundType="{{this.system.woundType}}"
-                      >
-                    </i></div>
-                  <div class="td" style="padding-top: 10px; text-align: left" title="{{this.system.description}}">{{this.name}}</div>
-                </div>
-                {{/each}}
-              </div>
+              <div>Pointy sticks</div>
             </fieldset>
           </div>
         </div>
       </div>
     
-      <div class="magick tab" data-group="primary" data-tab="magick">
-        <div style="display: flex; justify-content: flex-start; flex-direction: row; align-content: stretch; height: 100%; gap: 5px;">
-          <nav class="magick-nav" data-group="secondary">
-            <ul style="list-style-type: none; padding: 0; margin: 0;">
-              {{#if system.isadept}}
-              <li data-tab="adept" style="cursor: pointer; width: 55px">
-                <img src="/systems/ua3/assets/ui/tape-adept.png" title="Adept" style="width: 50px; border: none">
-              </li>
-              {{/if}}
-              {{#if system.isavatar}}
-              <li data-tab="avatar" style="cursor: pointer; width: 55px">
-                <img src="/systems/ua3/assets/ui/tape-avatar.png" title="Avatar" style="width: 50px; border: none">
-              </li>
-              {{/if}}
-              <li data-tab="rituals" style="cursor: pointer; width: 55px">
-                <img src="/systems/ua3/assets/ui/tape-rituals.png" title="Rituals" style="width: 50px; border: none">
-              </li>
-              <li data-tab="gutter" style="cursor: pointer; width: 55px">
-                <img src="/systems/ua3/assets/ui/tape-gutter.png" title="Gutter Magick" style="width: 50px; border: none">
-              </li>
-            </ul>
-          </nav>
-
-          <div class="magick-content" style="height: 100%; flex-grow:1">
-            <div class="tab" data-group="secondary" data-tab="adept">
-              {{#if system.isadept}}
-              <fieldset class="adept fieldBunch" style="height: 93%; margin-top: 10px">
-                <legend>&nbsp;{{system.adept.name}}&nbsp;</legend>
-                <div class="table" style="width: 100%">
-                  
-                  <div class="postit">
-                    <img src="/systems/ua3/assets/ui/postit.png" style="border: none">
-                  </div>
-              
-                  <div
-                    style="z-index: 3; position: absolute; top: 130px; text-align: center; vertical-align: middle; left: 955px; font-family: JMH Typewriter Bold; font-size: 1.15em">
-                    <div class="broadcastCharge">Minor</div>
-                    <div>
-                      <span class="adjustCharge" style="padding-right: 10px; cursor: pointer; color: red" data-action="-"
-                        data-target="minor" title="Remove a Minor charge"><b>-</b></span>
-                      <span
-                        style="width: 20px; text-align: center; {{#unless system.charge.broadcast}}color: darkorange{{/unless}}"><b>{{system.charge.minor}}</b></span>
-                      <span class="adjustCharge" style="padding-left: 10px; cursor: pointer; color: green" data-action="+"
-                        data-target="minor" title="Add a Minor charge"><b>+</b></span>
-                    </div>
-                    <div style="font-size: 10pt; margin-top: 2px; margin-bottom: -4px">
-                      <span style="padding-right: 6px">&nbsp;</span>
-                      {{#if system.charge.significant}}
-                      <span class="adjustCharge" style="width: 20px; cursor: pointer; text-align: center; color: blue" data-action="C"
-                        data-target="significant" title="Convert a Significant charge to 10 Minor charges"><i
-                          class="fas fa-sort-up"></i></span>
-                      {{/if}}
-                      <span style="padding-left: 10px">&nbsp;</span>
-                    </div>
-                    <div class="broadcastCharge">Significant</div>
-                    <div>
-                      <span class="adjustCharge" style="padding-right: 10px; cursor: pointer; color: red" data-action="-"
-                        data-target="significant" title="Remove a Significant charge"><b>-</b></span>
-                      <span
-                        style="width: 20px; text-align: center; {{#unless system.charge.broadcast}}color: darkorange{{/unless}}"><b>{{system.charge.significant}}</b></span>
-                      <span class="adjustCharge" style="padding-left: 10px; cursor: pointer; color: green" data-action="+"
-                        data-target="significant" title="Remove a Significant charge"><b>+</b></span>
-                    </div>
-                  </div>
-                                
-                  <nav class="school-nav" data-group="tertiary" style="width: 100%">
-                    <ul style="list-style-type: none; padding: 0; margin: 0; display: inline">
-                      <li data-tab="philosophy" style="cursor: pointer; display: inline">
-                        <img src="/systems/ua3/assets/ui/school-philosophy.png" title="Philosophy"
-                          style="height: 30px; border: none">
-                      </li>
-                      <li data-tab="spells" style="cursor: pointer; display: inline">
-                        <img src="/systems/ua3/assets/ui/school-spell.png" title="Spells" style="height: 30px; border: none">
-                      </li>
-                    </ul>
-                  </nav>
-
-                  <div class="school-content" style="margin-top: 10px; width: 100%">
-                    <div class="tab" data-group="tertiary" data-tab="philosophy" style="font-size: 1.1em">
-                      <div style="float: right; width: 160px; height: 80px">&nbsp;</div>
-                      {{#with system.school.system}}
-                        <div style="height: 600px; overflow: auto">
-                          <div>{{{description}}}</div>
-                          <div style="margin-top: 15px; font-family: JMH Typewriter Bold; font-size: 1.15em;">Domain</div>
-                          <div>{{{domain}}}</div>
-                          <div style="margin-top: 15px; font-family: JMH Typewriter Bold; font-size: 1.15em;">Taboo
-                            <i class="enactTaboo fa-solid fa-skull-crossbones fa-sm" style="cursor: pointer; color: red" data-type="adept" title="Break taboo and lose all your charges"></i>
-                          </div>
-                          <div>{{{taboo}}}</div>
-                          <div style="margin-top: 15px; font-family: JMH Typewriter Bold; font-size: 1.15em;">Gain a Minor Charge
-                            <i class="adjustCharge fa-solid fa-bolt fa-sm" style="cursor: pointer; color: green" data-action="+"
-                            data-target="minor" title="Gain a minor charge"></i>
-                          </div>
-                          <div>{{{generate.minor}}}</div>
-                          <div style="margin-top: 15px; font-family: JMH Typewriter Bold; font-size: 1.15em;">Gain a Significant Charge
-                            <i class="adjustCharge fa-solid fa-bolt fa-sm" style="cursor: pointer; color: green" data-action="+" data-target="significant"
-                            title="Gain a significant charge"></i>
-                          </div>
-                          <div>{{{generate.significant}}}</div>
-                        </div>
-                      {{/with}}
-                    </div>
-
-                    <div class="tab" data-group="tertiary" data-tab="spells" style="font-size: 1.1em; height: 89%">
-                      <div
-                        style="gap: 12px; width: 100%; height: 600px; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-content: stretch; align-items: flex-start;">
-
-                        <nav class="spell-nav" data-group="spell" style="width: 250px; height: 100%">
-                          {{#with system.school.system}}
-                          <ul style="list-style-type: none; padding: 0; margin: 0; height: 100%; width: 250px; order: 0; flex: 0 1 auto; align-self: stretch">
-                            <li
-                              style="font-family: JMH Typewriter Bold; font-size: 1.15em; border-bottom: 1px solid darkgrey; margin-bottom: 2px">
-                              <b>Minor</b></li>
-                            {{#each spellType.minor}}
-                            <li data-tab="{{this.id}}" style="margin: 0 0 5px 7px">
-                              <span {{#unless this.available}}class="disabled"{{/unless}} style="cursor: pointer" title="{{this.synopsis}}">{{{name}}}</span>
-                            </li>
-                            {{/each}}
-                            <li
-                              style="font-family: JMH Typewriter Bold; font-size: 1.15em; border-bottom: 1px solid darkgrey; margin: 10px 0 2px 0">
-                              <b>Significant</b>
-                            </li>
-                            {{#each spellType.significant}}
-                            <li data-tab="{{this.id}}" style="margin: 0 0 5px 7px">
-                              <span {{#unless this.available}}class="disabled"{{/unless}} style="cursor: pointer" title="{{this.synopsis}}">{{{name}}}</span>
-                            </li>
-                            {{/each}}
-                          </ul>
-                          {{/with}}
-                        </nav>
-
-                        <div style="order: 0; flex: 1 1 auto; align-self: stretch;">
-                          <div class="spell-content">
-                            {{#with system.school.system}}
-                            {{#each spells}}
-                            <div class="tab" data-group="spell" data-tab="{{@key}}">
-                              <div style="float: right; width: 160px; height: 80px">&nbsp;</div>
-                              <div style="font-size: 1.2em; margin-bottom: 5px"><b>{{{name}}}</b>&nbsp;
-                              {{#if this.available}}
-                              <i class="castSpell fa-solid fa-sparkles fa-sm" style="cursor: pointer; color: green" data-type="adept" data-spellid="{{@key}}" title="Cast {{name}}"></i>
-                              {{/if}}
-                                </div>
-                              <div><b>Cost</b>: {{this.charges}}{{#if this.chargeextra}}+{{/if}} {{this.chargetype}}</div>
-                              <div style="margin-top: 10px">
-                                <div>{{{this.description}}}</div>
-                              </div>
-                            </div>
-                            {{/each}}
-                            {{/with}}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-              {{/if}}
-            </div>
-
-            <div class="tab" data-group="secondary" data-tab="avatar">
-              {{#if system.isavatar}}
-              <fieldset class="avatar fieldBunch" style="height: 93%; margin-top: 10px; overflow: auto">
-                <legend>&nbsp;{{system.avatar.name}}&nbsp;</legend>
-                <div style="font-size: 1.1em">
-                  {{#if system.archetype}}
-                  <div>{{{breaklines system.archetype.system.description}}}</div>
-                  <div style="margin-top: 15px; font-family: JMH Typewriter Bold; font-size: 1.15em;">Taboo
-                    <i class="enactTaboo fa-solid fa-skull-crossbones fa-sm" style="cursor: pointer; color: red" data-type="avatar" title="Break taboo and lose all your charges"></i>
-                  </div>
-                  <div>{{{system.archetype.system.taboo}}}</div>
-                  <div style="margin-top: 15px; font-family: JMH Typewriter Bold; font-size: 1.15em;">Symbols</div>
-                  <div>{{{system.archetype.system.symbols}}}</div>
-                  <div
-                    style="margin-top: 15px; font-family: JMH Typewriter Bold; font-size: 1.15em; border-bottom: 1px solid darkgrey">
-                    <b>Channels</b></div>
-                  {{#each system.channels}}
-                  <div style="margin: 10px 0 10px 0">
-                    <div style="font-family: JMH Typewriter Bold; font-size: 1.15em; font-weight: bold">{{{this.blurb}}}
-                    <i class="castSpell fa-solid fa-sparkles fa-sm" style="cursor: pointer; color: green" data-type="avatar" data-spellid="{{this.minimum}}"
-                      title="Use this Channel"></i></div>
-                    <div>{{{this.description}}}</div>
-                  </div>
-                  {{/each}}
-                  {{/if}}
-                </div>
-              </fieldset>
-              {{/if}}
-            </div>
-
-            <div class="tab" data-group="secondary" data-tab="rituals">
-              <fieldset class="ritual fieldBunch"
-                style="height: 93%; ; margin-top: 10px">
-                <legend>&nbsp;Rituals&nbsp;</legend>
-
-                <div
-                  style="gap: 12px; width: 100%; height: 600px; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-content: stretch; align-items: flex-start;">
-
-                  <nav class="ritual-nav" data-group="ritual" style="width: 200px; height: 100%">
-                    <ul style="list-style-type: none; padding: 0; margin: 0; height: 100%; width: 200px; order: 0; flex: 0 1 auto; align-self: stretch">
-                      {{#each system.rituals}}
-                      <li data-tab="ritual-{{@key}}" style="margin: 0 0 5px 7px">
-                        {{#if @root.system.isGM}}
-                        <span class="deleteRitual" style="color: grey; cursor: pointer; margin-right: 6px" data-id="{{this.id}}"
-                          title="Remove this Ritual"><i class="fas fa-trash"></i></span>
-                        {{/if}}
-                        <span style="font-size: 1.1em; cursor: pointer">{{name}}</span>
-                      </li>
-                      {{/each}}
-                    </ul>
-                  </nav>
-
-                  <div style="order: 0; flex: 1 1 auto; align-self: stretch;">
-                    <div class="ritual-content">
-                      {{#each system.rituals}}
-                      <div class="tab" data-group="ritual" data-tab="ritual-{{@key}}">
-                        <div style="font-size: 1.2em; margin-bottom: 5px"><b>{{name}}</b></div>
-                        {{#if this.system.chargeType}}
-                        <div><b>Charges</b>: {{this.system.charges}} {{this.system.chargeType}}</div>
-                        {{/if}}
-                        <div style="margin-top: 10px">
-                          <div>{{{this.system.description}}}</div>
-                        </div>
-                      </div>
-                      {{/each}}
-                    </div>
-                  </div>
-                </div>
-
-              </fieldset>
-            </div>
-
-            <div class="tab" data-group="secondary" data-tab="gutter">
-              <fieldset class="gutter fieldBunch" style="height: 93%; margin-top: 10px">
-                <legend>&nbsp;Gutter Magic&nbsp;</legend>
-                <div class="table" style="width: 100%; height: 100%">
-                  <div style="height: 650px; padding-right: 5px; overflow: auto">
-                    <div>Gutter magick is all about semiotics, tweaking reality with whatever is handy. You’re making connections between things that are, ostensibly, not related; manufacturing a limited coincidence. It’s improv magick, and never works the same way twice. Just be careful; this stuff can mess you up if you’re not prepared.</div>
-                    <div style="margin: 8px 0 5px 0; font-weight: bold; border-bottom: 1px solid darkgray">Rolling Your Own</div>
-                    <div>To build an effect, you need a set of symbolic elements. These are items that represent you and the target. They can be whatever makes sense, like old clothes, the target’s diary, access to their iCloud account, etc. You also need something tied to the collective unconscious. This might be a movie where a man gets hit by a car, if you’re trying to injure an enemy. A Raquel Welch <i></i>One Million Years B.C.</i> poster can help you break a friend out of jail. The utility of the object is irrelevant, it’s the symbolism that matters.</div>
-                    <div style="margin-top: 6px">You need at least three items – though up to five is better, each in the following categories:</div>
-                    <div style="margin: 5px 0 3px 0; display: grid; grid-template-columns: 160px auto; gap: 10px">
-                      <div style="font-weight: 500">You</div>
-                      <div>Your driver’s license, your carnation from prom, your bronzed baby shoes, the current phone number of your first love.</div>
-                      <div style="font-weight: 500">The Target</div>
-                      <div>Their underpants, the date on which they lost their virginity, a sample of their DNA, a list of the last ten books they checked out from the library.</div>
-                      <div style="font-weight: 500">The Collective Unconscious</div>
-                      <div>A movie, a song, a pebble from the Berlin Wall, a first edition copy of The Great Gatsby, a Model T windshield, hair from Benedict Cumberbatch’s shaving razor.</div>
-                    </div>
-                    <div>Once you have these assembled, you make up a ritual. It must make sense to you, and it should convince the cosmos that these disparate things are - at least temporarily - connected. The more items you have that relate to your goal, the more likely the spell is to succeed. The ritual can also be affected - positively or negatively by the quality of the components, the time that you spend on the ritual, or whether you perform it in a mystically potent place or at a cosmically significant time. You can also increase the chances of success by dropping aminor (+10) or significant (+20) charge in to the mix.</div>
-                    <div style="margin: 8px 0 5px 0; font-weight: bold; border-bottom: 1px solid darkgray">So, What Can You Do With It?</div>
-                    <div>You get to pick one of the following effects. Gutter magick is also sticky; i.e., it hangs around until the effect makes a difference. If the target succeeds despite it, or would have failed without it, it persists until it’s the deciding factor.</div>
-                    <div style="margin: 5px 0 3px 0; display: grid; grid-template-columns: auto auto; gap: 10px 20px">
-                      <div style="font-weight: 500">Bless</div>
-                      <div>When you <i>Bless</i> an endeavor, you make it more likely to occur. This is using gutter magick at the appropriate scale to add to an objective. You perform your ritual and, if you succeed, get to puff up your objective.</div>
-                      <div style="font-weight: 500">Bond</div>
-                      <div>You form a symbolic <i>Bond</i> between yourself and someone else in the universe. Maybe you connect to an enemy, maybe the girl you have a crush on. What’s important is that due to the symbolism, when the cosmos looks upon you, you seem to be linked together. With a Bond, you get +10 when trying to explain something to, or cooperate with, the person to whom you’re bonded. It lasts until it has made a difference.</div>
-                      <div style="font-weight: 500">Boon</div>
-                      <div>When you want something to go right, you can give a <i>Boon</i> to yourself or another. This grants +20 on a check relating to a specific condition which evokes the Boon. You can’t just get a bonus to Notice, but you can get it when searching for fingerprints, or when you're trying to find Paula Rampling.</div>
-                      <div style="font-weight: 500">Whammy</div>
-                      <div>This redirects the inherent unfairness the cosmos toward a person or situation of your choice. This creates a -20 penalty to an opponent’s roll, and you must target this with exacting specificity. It can’t just be “the armored car guard,” you’re going to need a name and the conditions which evoke the effect.</div>
-                      <div style="font-weight: 500">Curse</div>
-                      <div>Maybe you’d rather hurt someone than protect yourself from them. this effect employs synchronicity and coincidence to injure your target, pulling at the strands of fate to kick them in the astral nuts. It does 1d10 damage. Maybe they’re crossing a street and a car comes by and clips them. Maybe they break their nose opening the door to the office. They don’t need to be anywhere near you - and it’s probably better that they aren’t - when the <i>Curse</i> manifests.</div>
-                      <div style="font-weight: 500">Proxy</div>
-                      <div>
-                        <div>A <i>Proxy</i> is another person that the cosmos mistakes for you. They must be similar enough to you that this is plausible. Appearance has nothing to do with it; a similar taste in TV, or beer, or flower arrangement is more useful (though appearance doesn’t hurt). First you must create a <i>Bond</i> with the target, then you can make them your <i>Proxy</i> with another ritual. After that, long distance bad juju or scrying that comes your way may be misdirected to them. Basically, each <i>Proxy</i>, plus the original, rolls a die, and the lowest roll gets the suck. This can’t protect you from direct attacks – because your attacker has someone to focus on, but any kind of immaterial entity or long-distance mystic mischief has a chance of getting waylaid by the Proxy.</div>
-                        <div style="margin-top: 6px">Moreover, if you’re going to die, you can opt to kill a <i>Proxy</i> instead. This is not guaranteed; make the same low-dice determination, and if the loser isn’t you, a <i>Proxy</i> dies instead (usually with no visible cause) and you lose half your current health. Doing this jerk-ass move is a Violence-8 check, and breaks the all your <i>Proxy</i> bonds. Presumably, the cosmos thinks all of them died? Proxy isn’t just sticky, it’s permanent until magick or death removes it.</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-            </div>
-
-          </div>
-        </div>
+      <div class="flexrow magick tab" data-group="primary" data-tab="magick">
+        Magick!
       </div>
     
-      <div class="flexrow notes tab" data-group="primary" data-tab="notes">
-        <div style="height: 700px">
-          {{editor
-          system.details.notes.value
-          target="system.details.notes.value"
-          button=true
-          editable=editable
-          }}
-        </div>
+      <div class="flexrow stuff tab" data-group="primary" data-tab="stuff">
+        Stuff...
       </div>
     </div>
 
