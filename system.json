@@ -2,7 +2,7 @@
   "id": "ua3",
   "title": "Unknown Armies v3",
   "description": "A system for playing Unknown Armies v3",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "compatibility": {
     "minimum": "11.315",
     "verified": "12.0"
