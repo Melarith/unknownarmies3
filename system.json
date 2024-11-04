@@ -31,7 +31,7 @@
     }
   ],
   "socket": false,
-  "manifest": "",
+  "manifest": "https://raw.githubusercontent.com/Melarith/unknownarmies3/main/system.json",
   "download": "https://github.com/Melarith/unknownarmies3/releases/latest/download/unknownarmies3-main.zip",
   "initiative": "",
   "gridDistance": 1,
